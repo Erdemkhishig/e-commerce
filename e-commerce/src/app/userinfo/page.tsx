@@ -18,12 +18,11 @@ export default function Userinfo() {
             <div className="max-w-screen-xl m-auto flex flex-col items-center justify-center gap-12 py-32">
                 <div className="w-[100%] flex">
                     <div className="w-[20%] flex flex-col  items-start">
-                        <button className=" p-1 rounded-xl w-full flex justify-start bg-gray-200 pl-4">Хэрэглэгчийн хэсэг</button>
-                        <button className="pl-4">Захиалгын түүх</button>
+                        <button onClick={() => setIsOpen(true)} className=" p-1 rounded-xl w-full flex justify-start bg-gray-200 pl-4">Хэрэглэгчийн хэсэг</button>
+                        <button onClick={() => setIsOpen(false)} className="pl-4">Захиалгын түүх</button>
                     </div>
                     <div className="w-full">
-                        <User />
-
+                        {isOpen ? <User /> : <Order />}
                     </div>
 
                 </div>

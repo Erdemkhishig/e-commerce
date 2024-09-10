@@ -3,85 +3,102 @@ import Image from "next/image";
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
 
-const image = [
+
+const images = [
     {
+        id:"1",
+        img: "/image0.png",
+        title: "Wildflower Hoodie",
+        price: "120'000₮"
+    },
+    {
+        id:"2",
+        img: "/image (1).png",
+        title: "All Smiles Nalgene",
+        price: "120'000₮"
+    },
+    {
+        id:"3",
+        img: "/image (2).png",
+        title: "Chunky Glyph Tee",
+        price: "120'000₮"
+    },
+    {
+        id:"4",
+        img: "/image (3).png",
+        title: "The Prompt Magazine",
+        price: "120'000₮"
+    },
+
+    {
+        id:"5",
         img: "/image00.png",
         title: "Wildflower Hoodie",
         price: "120'000₮"
     },
     {
+        id:"6",
         img: "/image (5).png",
         title: "All Smiles Nalgene",
         price: "120'000₮"
     },
     {
+        id:"7",
         img: "/image (7).png",
         title: "Chunky Glyph Tee",
         price: "120'000₮"
     },
     {
+        id:"8",
         img: "/image (6).png",
         title: "The Prompt Magazine",
         price: "120'000₮"
     },
     {
+        id:"9",
         img: "/image7.png",
         title: "Chunky Glyph Tee",
         price: "120'000₮"
     },
     {
-        img: "/imag.png",
-        title: "The Prompt Magazine",
-        price: "120'000₮"
-    },
-    {
-        img: "/imag.png",
-        title: "Chunky Glyph Tee",
-        price: "120'000₮"
-    },
-    {
+        id:"10",
         img: "/image8.png",
         title: "The Prompt Magazine",
         price: "120'000₮"
     },
     {
-        img: "/image00.png",
+        id:"11",
+        img: "/image7.png",
+        title: "Chunky Glyph Tee",
+        price: "120'000₮"
+    },
+    {
+        id:"12",
+        img: "/image8.png",
+        title: "The Prompt Magazine",
+        price: "120'000₮"
+    },
+
+    {
+        id:"13",
+        img: "/image0.png",
         title: "Wildflower Hoodie",
         price: "120'000₮"
     },
     {
-        img: "/image (5).png",
+        id:"14",
+        img: "/image (1).png",
         title: "All Smiles Nalgene",
         price: "120'000₮"
     },
     {
-        img: "/image (7).png",
+        id:"15",
+        img: "/image (2).png",
         title: "Chunky Glyph Tee",
         price: "120'000₮"
     },
-    {
-        img: "/image (6).png",
-        title: "The Prompt Magazine",
-        price: "120'000₮"
-    },
-    {
-        img: "/imag.png",
-        title: "Chunky Glyph Tee",
-        price: "120'000₮"
-    },
-    {
-        img: "/image8.png",
-        title: "The Prompt Magazine",
-        price: "120'000₮"
-    },
-    {
-        img: "/image7.png",
-        title: "Chunky Glyph Tee",
-        price: "120'000₮"
-    },
-
-
-]
+ 
+];
 
 export default function Category() {
     return (
@@ -126,7 +143,7 @@ export default function Category() {
             </div>
             <Link href="/product/id" className="w-3/4">
                 <div className="grid grid-cols-3 grid-rows-5 gap-4">
-                    {image.map((image, index) => (
+                    {images.map((image, index) => (
                         <div key={index} className="relative">
                             <Image
                                 className='rounded-2xl'

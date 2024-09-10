@@ -2,7 +2,7 @@
 import * as React from "react"
 
 
-import Link from "next/link";
+
 
 import { Order } from "@/components/Order";
 import { Info } from "@/components/Info";

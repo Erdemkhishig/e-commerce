@@ -13,8 +13,11 @@ import Link from "next/link";
 
 
 export const Header = () => {
+
+
+
     return (
-        <div className="w-full h-[68px] bg-black mb-4 ">
+        <div className="w-full h-[68px] bg-black ">
             <div className="m-auto flex items-center justify-between h-full px-48">
 
                 <div className="flex items-center gap-4 justify-center">
@@ -39,10 +42,10 @@ export const Header = () => {
                 <div className="flex gap-4 items-center">
                     <Link href="/save"><div><FaRegHeart color="white" size={20} />
                     </div></Link>
-                    <div><MdOutlineShoppingCart color="white" size={20} />
-                    </div>
-                    <Link href="/register"><Button className="border-blue-500 border">Бүртгүүлэх</Button></Link>
-                    <Link href="/login"><Button className="bg-blue-500">Нэвтрэх</Button></Link>
+                    <Link href="/purchase"><div><MdOutlineShoppingCart color="white" size={20} />
+                    </div></Link>
+                    <Link href="/register"><Button className="border-blue-700  rounded-2xl border-2 hover:bg-blue-700">Бүртгүүлэх</Button></Link>
+                    <Link href="/login"><Button className="border-blue-700  rounded-2xl border-2 hover:bg-blue-700">Нэвтрэх</Button></Link>
                 </div>
             </div>
 

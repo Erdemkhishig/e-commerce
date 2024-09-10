@@ -74,24 +74,24 @@ export const Order = () => {
                         </Button>
                     </CollapsibleTrigger>
                 </div>
-                <div className="rounded-md border px-4 py-3">
+                <div className="rounded-md px-4 py-3">
                     <p className="border-blue-600 bg-blue-600 p-1 rounded-xl w-48 text-white flex justify-center">Xүргэлтэнд гарсан</p>
                 </div>
                 <CollapsibleContent className="space-y-2">
                     <div className='flex gap-4 flex-col w-full '>
                         {images.map((image, index) => (
-                            <div className='flex w-full border-2 p-4 rounded-2xl bg-white' key={index}>
+                            <div className='flex w-full  p-4 rounded-2xl bg-white' key={index}>
                                 <div className='overflow-hidden rounded-2xl'>
                                     <Image
-                                        className='w-36 h-24 '
+                                        className='w-54 h-24 '
                                         src={image.img}
-                                        width={20}
-                                        height={20}
+                                        width={200}
+                                        height={200}
                                         alt={`Image ${index}`}
                                     />
                                 </div>
 
-                                <div className='flex gap-4 flex-col justify-center items-center px-2 w-[40%]'>
+                                <div className='flex gap-4 flex-col justify-center items-center px-2 w-[65%]'>
                                     <p>{image.title}</p>
                                     <div className="flex gap-2">
                                         <p>1</p>
@@ -108,7 +108,7 @@ export const Order = () => {
                         ))}
 
                     </div>
-                    <div className='px-12 font-bold flex justify-between w-full border-2 p-4 rounded-2xl bg-white'>
+                    <div className='px-12 font-bold flex justify-between w-full p-4 rounded-2xl bg-white'>
                         <p>Үнийн дүн:</p>
                         <p>480’000₮</p>
 
@@ -132,12 +132,12 @@ export const Order = () => {
                         </Button>
                     </CollapsibleTrigger>
                 </div>
-                <div className="rounded-md border px-4 py-3">
+                <div className="rounded-md px-4 py-3">
                     <p className="border-blue-600 bg-blue-600 p-1 rounded-xl w-48 text-white flex justify-center">дууссан</p>
                 </div>
                 <CollapsibleContent className="space-y-2">
 
-                    <div className='px-12 font-bold flex justify-between w-full border-2 p-4 rounded-2xl bg-white'>
+                    <div className='px-12 font-bold flex justify-between w-full p-4 rounded-2xl bg-white'>
                         <p>Үнийн дүн:</p>
                         <p>120’000₮</p>
 
@@ -161,12 +161,12 @@ export const Order = () => {
                         </Button>
                     </CollapsibleTrigger>
                 </div>
-                <div className="rounded-md border px-4 py-3">
+                <div className="rounded-md px-4 py-3">
                     <p className="border-blue-600 bg-blue-600 p-1 rounded-xl w-48 text-white flex justify-center">дууссан</p>
                 </div>
                 <CollapsibleContent className="space-y-2">
 
-                    <div className='px-12 font-bold flex justify-between w-full border-2 p-4 rounded-2xl bg-white'>
+                    <div className='px-12 font-bold flex justify-between w-full p-4 rounded-2xl bg-white'>
                         <p>Үнийн дүн:</p>
                         <p>120’000₮</p>
 

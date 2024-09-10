@@ -1,16 +1,12 @@
 
+"use client"
+import * as React from "react"
 import Image from "next/image";
 import { FaRegHeart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 import { FaStarHalfStroke } from "react-icons/fa6";
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover"
+
+import { Rate } from "@/components/Rate";
 
 const image = [
 
@@ -66,10 +62,17 @@ const detail = [
 ]
 
 export default function Product() {
+
+    const [isRateVisible, setIsRateVisible] = React.useState(false);
+
+    const toggleRateVisibility = () => {
+        setIsRateVisible(!isRateVisible);
+    }
+
     return (
         <div className="max-w-screen-xl m-auto pb-24 ">
             <div className="flex gap-4 py-16">
-                <div className="w-[10%]   flex flex-col justify-center items-center gap-4">
+                <div className="w-[10%] flex flex-col justify-center items-center gap-4">
                     {detail.map((item, index) => (
                         <div key={index}>
                             <Image
@@ -77,16 +80,12 @@ export default function Product() {
                                 src={item.img}
                                 width={80}
                                 height={80}
-                                alt=
-                                {`item ${index}`}
+                                alt={`item ${index}`}
                             />
-
                         </div>
-
-
                     ))}
                 </div>
-                <div className="w-2/5   flex justify-center">
+                <div className="w-2/5 flex justify-center h-fit">
                     <Image
                         className='rounded-2xl '
                         src="/image14.png"
@@ -97,15 +96,18 @@ export default function Product() {
                 </div>
                 <div className="w-1/2 flex flex-col justify-center gap-4">
                     <p className="w-16 h-8 border-2 border-blue-500 rounded-2xl flex items-center justify-center">шинэ</p>
-                    <div className="flex gap-4 items-center "><p className="font-bold text-2xl">Wildflower Hoodie </p> <p> <FaRegHeart size={20} /></p></div>
+                    <div className="flex gap-4 items-center ">
+                        <p className="font-bold text-2xl">Wildflower Hoodie </p>
+                        <p> <FaRegHeart size={20} /></p>
+                    </div>
                     <p className="text-lg">Зэрлэг цэцгийн зурагтай даавуун материалтай цамц</p>
                     <p className="underline">Хэмжээний заавар</p>
                     <div className="flex gap-2">
-                        <p className=" bg-black text-white text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center  p-4 ">S</p>
+                        <p className="bg-black text-white text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">S</p>
                         <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">M</p>
-                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center  p-4 ">L</p>
-                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center  p-4 ">XL</p>
-                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center  p-4 ">2XL</p>
+                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">L</p>
+                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">XL</p>
+                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">2XL</p>
                     </div>
                     <div className="flex gap-4 items-center">
                         <p className="text-2xl w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">-</p>
@@ -114,26 +116,25 @@ export default function Product() {
                     </div>
                     <p className="font-bold text-xl">120'000₮</p>
                     <p className="w-44 text-white bg-blue-500 h-8 border-2 border-blue-500 rounded-2xl flex items-center justify-center">Сагсанд нэмэх</p>
-                    <div className="flex gap-2"><Popover>
-                        <PopoverTrigger>Үнэлгээ</PopoverTrigger>
-                        <PopoverContent>Place content for the popover here.</PopoverContent>
-                    </Popover>
-                        <Popover>
-                            <PopoverTrigger className="underline text-blue-400">бүгдийг харах</PopoverTrigger>
-                            <PopoverContent>Place content for the popover here.</PopoverContent>
-                        </Popover>
-
+                    <div className="flex gap-2">
+                        <p>Үнэлгээ</p>
+                        <button onClick={toggleRateVisibility} className="underline text-blue-400">
+                            {isRateVisible ? "бүгдийг хураах" : "бүгдийг харах"}
+                        </button>
                     </div>
                     <div className="flex gap-3 items-center">
                         <FaStar fill="yellow" size={24} /><FaStar fill="yellow" size={24} /><FaStar fill="yellow" size={24} /><FaStar fill="yellow" size={24} /><FaStarHalfStroke fill="yellow" size={24} />
                         <p>4.6(24)</p>
-
-
                     </div>
                 </div>
             </div>
+            <div className="flex justify-end -mt-40 -ml-8">
+                <div className="w-1/2">
+                    {isRateVisible && <Rate />}
+                </div>
+            </div> 
             <div className="py-16">
-                <p className="text-3xl font-bold py-8">Холбоотой бараа</p>
+                <p className="text-3xl font-bold py-16">Холбоотой бараа</p>
                 <div className="grid grid-cols-4 grid-rows-2 gap-4">
                     {image.map((image, index) => (
                         <div key={index} className="relative">
@@ -150,12 +151,9 @@ export default function Product() {
                                 <p className='font-bold'>{image.price}</p>
                             </div>
                         </div>
-
                     ))}
-
                 </div>
             </div>
-
         </div>
     )
 }

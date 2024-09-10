@@ -6,9 +6,9 @@ import Link from "next/link";
 
 export default function Login() {
     return (
-        <div className="max-w-screen-xl m-auto flex flex-col items-center justify-center gap-12 pb-96">
+        <div className="max-w-screen-xl m-auto flex flex-col items-center justify-center gap-12 pb-80">
 
-            <div className="w-[35%] flex justify-center items-center flex-col gap-8">
+            <div className="w-[35%] flex justify-center items-center flex-col gap-8 mt-20">
 
                 <p className="text-2xl font-black">Нэвтрэх</p>
                 <Input className=" rounded-2xl bg-white" type="text" placeholder="Имэйл хаяг" />

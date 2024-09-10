@@ -22,7 +22,7 @@ export default function Forget() {
 
 
 
-                <Link href="opt" className="w-[454px] h-8 bg-blue-700 rounded-2xl text-white flex justify-center items-center">Илгээх</Link>
+                <button className="w-[454px] h-8 bg-blue-700 rounded-2xl text-white flex justify-center items-center">Илгээх</button>
 
             </div>
 
@@ -52,7 +52,7 @@ export default function Forget() {
                 </InputOTP>
 
 
-                <Link href="changepassword">Оруулах</Link>
+           <button>Оруулах</button>
                 <button className="">Дахин илгээх (30)</button>
 
             </div>

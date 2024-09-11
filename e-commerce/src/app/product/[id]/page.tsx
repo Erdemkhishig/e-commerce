@@ -98,24 +98,24 @@ export default function Product() {
                     <p className="w-16 h-8 border-2 border-blue-500 rounded-2xl flex items-center justify-center">шинэ</p>
                     <div className="flex gap-4 items-center ">
                         <p className="font-bold text-2xl">Wildflower Hoodie </p>
-                        <p> <FaRegHeart size={20} /></p>
+                        <button> <FaRegHeart size={20} /></button>
                     </div>
                     <p className="text-lg">Зэрлэг цэцгийн зурагтай даавуун материалтай цамц</p>
                     <p className="underline">Хэмжээний заавар</p>
                     <div className="flex gap-2">
-                        <p className="bg-black text-white text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">S</p>
-                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">M</p>
-                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">L</p>
-                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">XL</p>
-                        <p className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">2XL</p>
+                        <button className="bg-black text-white text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">S</button>
+                        <button className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">M</button>
+                        <button className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">L</button>
+                        <button className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">XL</button>
+                        <button className="text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">2XL</button>
                     </div>
                     <div className="flex gap-4 items-center">
-                        <p className="text-2xl w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">-</p>
-                        <p>1</p>
-                        <p className="text-2xl w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">+</p>
+                        <button className="text-2xl w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">-</button>
+                        <button>1</button>
+                        <button className="text-2xl w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">+</button>
                     </div>
                     <p className="font-bold text-xl">120'000₮</p>
-                    <p className="w-44 text-white bg-blue-500 h-8 border-2 border-blue-500 rounded-2xl flex items-center justify-center">Сагсанд нэмэх</p>
+                    <button className="w-44 text-white bg-blue-500 h-8 border-2 border-blue-500 rounded-2xl flex items-center justify-center">Сагсанд нэмэх</button>
                     <div className="flex gap-2">
                         <p>Үнэлгээ</p>
                         <button onClick={toggleRateVisibility} className="underline text-blue-400">
@@ -132,20 +132,21 @@ export default function Product() {
                 <div className="w-1/2">
                     {isRateVisible && <Rate />}
                 </div>
-            </div> 
+            </div>
             <div className="py-16">
                 <p className="text-3xl font-bold py-16">Холбоотой бараа</p>
                 <div className="grid grid-cols-4 grid-rows-2 gap-4">
                     {image.map((image, index) => (
                         <div key={index} className="relative">
-                            <Image
-                                className='rounded-2xl'
+                            <div className="overflow-hidden rounded-2xl"><Image
+                                className=' object-cover duration-500 hover:scale-110'
                                 src={image.img}
                                 width={310}
                                 height={360}
                                 alt={`Image ${index}`}
                             />
-                            <div className='py-2 absolute top-4 right-8'><FaRegHeart color="white" size={28} /></div>
+                            </div>
+                            <button className='py-2 absolute top-4 right-8'><FaRegHeart color="white" size={28} /></button>
                             <div className='flex gap-2 flex-col  py-2'>
                                 <p>{image.title}</p>
                                 <p className='font-bold'>{image.price}</p>

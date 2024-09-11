@@ -1,6 +1,9 @@
-import { log } from "console";
 import express from "express";
+import cors from "cors";
+import { connectToDatabase } from "./database";
 
+
+connectToDatabase()
 const app = express();
 
 app.get("/", (_req, res) => {

@@ -52,7 +52,7 @@ export default function Forget() {
                 </InputOTP>
 
 
-           <button>Оруулах</button>
+                <button>Оруулах</button>
                 <button className="">Дахин илгээх (30)</button>
 
             </div>
@@ -63,13 +63,13 @@ export default function Forget() {
 
                 <p className="text-2xl font-black">Нууц үг сэргээх</p>
 
-                <Input type="text" placeholder="Шинэ нууц үг" />
-                <Input type="text" placeholder="Шинэ нууц үг давтах" />
+                <Input className="bg-white rounded-2xl" type="text" placeholder="Шинэ нууц үг" />
+                <Input className="bg-white rounded-2xl" type="text" placeholder="Шинэ нууц үг давтах" />
                 <div className=" w-full">
                     <li>Том үсэг орсон байх</li>
                     <li>Жижиг үсэг орсон байх</li>
                     <li>Тоо орсон байх</li>
-                    <li className="text-red-400">Тэмдэгт орсон байх</li>
+                    <li className="">Тэмдэгт орсон байх</li>
                 </div>
 
 

@@ -3,6 +3,9 @@ import cors from "cors";
 import { connectToDatabase } from "./database";
 import { productRouter } from "./routes/product.router";
 import { categoryRouter } from "./routes/category.router";
+import { reviewRouter } from "./routes/review.router";
+import { orderRouter } from "./routes/order.router";
+import { userRouter } from "./routes/user.router";
 
 
 connectToDatabase()
@@ -16,6 +19,9 @@ app.get("/", (_req, res) => {
 
 app.use("/product", productRouter);
 app.use("/category", categoryRouter);
+app.use("/review", reviewRouter);
+app.use("/order", orderRouter);
+app.use("/", userRouter);
 
 app.listen(3001, () => {
     console.log("Server is running on http://localhost:3001");

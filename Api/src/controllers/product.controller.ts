@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 import { productModel } from "../models";
 
 export const createProductController: RequestHandler = async (req, res) => {
-    const { title, price, image, category, color, size } = req.body;
+    const { title, price, image, category, color, size, rating } = req.body;
     try {
         const newProduct = await new productModel({
             title,
@@ -11,6 +11,7 @@ export const createProductController: RequestHandler = async (req, res) => {
             category,
             color,
             size,
+            rating,
             createdAt: new Date(),
             updatedAt: new Date(),
         });

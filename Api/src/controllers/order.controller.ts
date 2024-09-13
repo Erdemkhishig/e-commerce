@@ -1,35 +1,21 @@
 import { RequestHandler } from "express";
-import { reviewModel } from "../models";
+import { orderModel } from "../models/order.schema";
 
-export const createReviewController: RequestHandler = async (req, res) => {
-    const { userId, productId, rating, comment } = req.body;
+export const createOrderController: RequestHandler = async (req, res) => {
+    const { userId, productId, paid, address } = req.body;
     try {
-        const newReview = await new reviewModel({
+        const newOrder = await new orderModel({
             userId,
             productId,
-            rating,
-            comment,
+            paid,
+            address,
             createdAt: new Date(),
             updatedAt: new Date(),
         });
-        newReview.save()
+        newOrder.save()
         return res.status(201).json({
-            message: "review created successfully",
-            newReview
-        });
-    } catch (error) {
-        return res.status(500).json({
-            message: "interna; server error",
-        });
-    }
-};
-
-export const getReviewController: RequestHandler = async (req, res) => {
-    try {
-        const review = await reviewModel.find({})
-
-        return res.status(200).json({
-            review,
+            message: "Order created successfully",
+            newOrder
         });
     } catch (error) {
         return res.status(500).json({
@@ -38,25 +24,38 @@ export const getReviewController: RequestHandler = async (req, res) => {
     }
 };
 
-export const getReviewByIdController: RequestHandler = async (req, res) => {
+export const getOrderController: RequestHandler = async (req, res) => {
+    try {
+        const order = await orderModel.find({})
+
+        return res.status(200).json({
+            order,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Internal server error",
+        });
+    }
+};
+
+export const getOrderByIdController: RequestHandler = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const review = await reviewModel.findById(id);
+        const order = await orderModel.findById(id);
 
-        if (!review) {
+        if (!order) {
             return res.status(404).json({
-                message: "review not found",
+                message: "order not found",
             });
         }
 
         return res.status(200).json({
-            review,
+            order,
         });
     } catch (error) {
         return res.status(500).json({
             message: "Internal server error",
         });
     }
-
-}
+};

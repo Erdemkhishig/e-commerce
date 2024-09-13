@@ -1,34 +1,22 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
-const productSchema = new Schema({
-    title: {
+const orderSchema = new Schema({
+    userId: {
+        type: String,
+        required: false,
+    },
+    productId: {
+        type: String,
+        required: false,
+    },
+    paid: {
         type: String,
         required: true,
     },
-    price: {
+    address: {
         type: String,
         required: true,
-    },
-    image: {
-        type: String,
-        required: false,
-    },
-    category: {
-        type: String,
-        required: false,
-    },
-    color: {
-        type: String,
-        required: false,
-    },
-    size: {
-        type: String,
-        required: false,
-    },
-    rating: {
-        type: String,
-        required: false,
     },
     createdAt: {
         type: Date,
@@ -42,4 +30,4 @@ const productSchema = new Schema({
     },
 });
 
-export const productModel = model("Product", productSchema);
+export const orderModel = model("Order", orderSchema);

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { AuthProvider } from "@/app/provider/Auth.provider"
 
 
 const geistSans = localFont({
@@ -29,9 +30,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable}  ${geistMono.variable} antialiased`}
-      >
-        <Header /> <div className="bg-gray-100 py-8 " style={{ minHeight: "calc(100vh - 282px - 68px)" }}>{children} </div><Footer />
+        className={`${geistSans.variable}  ${geistMono.variable} antialiased`}>  
+        <AuthProvider>
+
+        <Header /> 
+        <div className="bg-gray-100 py-8 " style={{ minHeight: "calc(100vh - 282px - 68px)" }}>
+          {children} 
+          </div>
+          <Footer />
+          </AuthProvider>
       </body>
     </html>
   );

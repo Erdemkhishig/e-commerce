@@ -1,23 +1,36 @@
-import * as React from "react"
+"use client";
+import React, { useState } from 'react';
 import { Input } from "@/components/ui/input"
 import Link from "next/link";
+import { useAuth } from "@/app/provider/Auth.provider";
+
 
 
 
 export default function Login() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const { login } = useAuth();
+    console.log(login);
+    
+    
     return (
         <div className="max-w-screen-xl m-auto flex flex-col items-center justify-center gap-12 pb-80">
 
             <div className="w-[35%] flex justify-center items-center flex-col gap-8 mt-20">
 
                 <p className="text-2xl font-black">Нэвтрэх</p>
-                <Input className=" rounded-2xl bg-white" type="text" placeholder="Имэйл хаяг" />
+                <Input className=" rounded-2xl bg-white" type="text" placeholder="Имэйл хаяг" value={email}
+                    onChange={(e) => setEmail(e.target.value)} />
 
-                <Input className=" rounded-2xl bg-white" type="text" placeholder="Нууц үг" />
+                <Input className=" rounded-2xl bg-white" type="text" placeholder="Нууц үг" value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
 
 
 
-                <button className="w-[454px] h-8 bg-blue-700 py-5 flex items-center justify-center text-white  rounded-2xl">Нэвтрэх</button>
+                <button className="w-[454px] h-8 bg-blue-700 py-5 flex items-center justify-center text-white  rounded-2xl"  onClick={() => login(email, password)} >Нэвтрэх</button>
                 <Link href="forget" className="underline">Нууц үг мартсан</Link>
 
                 <Link href="/register"><button className="w-[454px] h-8 bg-white py-5 flex items-center my-8 justify-center text-blue-700  rounded-2xl">Бүртгүүлэх</button></Link>

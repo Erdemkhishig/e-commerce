@@ -1,14 +1,18 @@
-import { RequestHandler } from "express";
+import { RequestHandler } from 'express';
 
-const getMe: RequestHandler = async (req, res) => {
-    try {
-        // const user = req.user;
+export const someProtectedRoute: RequestHandler = (req, res) => {
+    const user = req.body
 
-        // res.json(user);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
+    if (!user) {
+        return res.status(401).json({ message: "Unauthorized" });
     }
-};
 
-module.exports = { getMe };
+    res.json({
+        message: "Access granted",
+        user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+        },
+    });
+};

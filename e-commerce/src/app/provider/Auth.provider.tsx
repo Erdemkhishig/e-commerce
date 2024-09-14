@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const [user, setUser] = useState<User | null>(null);
     const [isReady, setIsReady] = useState(false);
-    // const [redirectAfterLogin, setRedirectAfterLogin] = useState<string>("");
+    const [redirectAfterLogin, setRedirectAfterLogin] = useState<string>("");
 
     const login = async (email: string, password: string) => {
         try {
@@ -43,8 +43,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             localStorage.setItem("token", res.data.token);
             setUser(res.data.user);
 
-            // router.push(redirectAfterLogin);
-            // setRedirectAfterLogin("/records");
+            router.push(redirectAfterLogin);
+            setRedirectAfterLogin("/main");
         } catch (err: any) {
             console.log(err);
             toast.error(err.message);
@@ -55,8 +55,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         try {
             await api.post("/register", { name, email, password });
 
-            // setRedirectAfterLogin("/info1");
-            // router.push("/login");
+            setRedirectAfterLogin("/main");
+            router.push("/login");
         } catch (err: any) {
             console.log(err);
             toast.error(err.response?.data?.message || "An error occurred");
@@ -66,7 +66,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const logout = () => {
         localStorage.removeItem("token");
         setUser(null);
-        // router.push("/login");
+        router.push("/login");
     };
 
     useEffect(() => {

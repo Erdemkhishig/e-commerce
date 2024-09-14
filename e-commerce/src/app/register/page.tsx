@@ -94,6 +94,7 @@ export default function Register() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
     const { register } = useAuth();
+    
 
     const handlePasswordFocus = () => setIsPasswordFocused(true);
     const handlePasswordBlur = () => setIsPasswordFocused(false);

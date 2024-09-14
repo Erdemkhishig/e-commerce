@@ -22,3 +22,4 @@ const authMiddleware: RequestHandler = (req, res, next) => {
   }
 };
 
+module.exports = { authMiddleware };

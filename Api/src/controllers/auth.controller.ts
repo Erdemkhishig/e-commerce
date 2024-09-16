@@ -1,18 +1,18 @@
-import { RequestHandler } from 'express';
+import { Request, Response } from 'express';
 
-export const someProtectedRoute: RequestHandler = (req, res) => {
-    const user = req.body
+interface CustomRequest extends Request {
+    user?: any;
+}
 
-    if (!user) {
-        return res.status(401).json({ message: "Unauthorized" });
+const getMe = async (req: CustomRequest, res: Response): Promise<void> => {
+    try {
+        const user = req.user;
+
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
-
-    res.json({
-        message: "Access granted",
-        user: {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-        },
-    });
 };
+
+export { getMe };

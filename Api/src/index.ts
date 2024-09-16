@@ -6,7 +6,7 @@ import { categoryRouter } from "./routes/category.router";
 import { reviewRouter } from "./routes/review.router";
 import { orderRouter } from "./routes/order.router";
 import { userRouter } from "./routes/user.router";
-// import { authMiddleware } from "./middlewares/auth.middleware"
+import { authMiddleware } from "./middlewares/auth.middleware"
 
 
 
@@ -14,7 +14,7 @@ connectToDatabase()
 const app = express();
 app.use(cors());
 app.use(express.json());
-// app.use(authMiddleware)
+app.use(authMiddleware)
 
 
 app.get("/", (_req, res) => {

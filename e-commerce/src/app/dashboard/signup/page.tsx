@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaMicrosoft } from "react-icons/fa";
 import { IoLogoApple } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useEffect } from "react";
 
 
 
@@ -13,6 +14,9 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 
 export default function Signup() {
+    useEffect(() => {
+
+    }, [])
 
     return (
         <div className="max-w-screen-2xl m-auto flex flex-col items-center justify-center gap-12 pb-80">

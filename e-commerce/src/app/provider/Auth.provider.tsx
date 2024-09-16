@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 
 interface User {
-    // Define the shape of the user object based on your API response
+
     id: string;
     name: string;
     email: string;
@@ -22,7 +22,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const authPaths = ["/login", "/"];
+const authPaths = ["/login"];
 
 interface AuthProviderProps {
     children: ReactNode;
@@ -42,6 +42,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
             localStorage.setItem("token", res.data.token);
             setUser(res.data.user);
+
 
             router.push(redirectAfterLogin);
             setRedirectAfterLogin("/main");

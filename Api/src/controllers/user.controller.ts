@@ -29,14 +29,11 @@ export const register: RequestHandler = async (req, res) => {
     }
 };
 
-
 export const login: RequestHandler = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-
         const user = await userModel.findOne({ email });
-
 
         if (!user) {
             return res.status(401).json({ message: "Invalid credentials" });
@@ -50,7 +47,7 @@ export const login: RequestHandler = async (req, res) => {
 
         const token = jwt.sign(
             {
-                id: user.id,
+                id: user._id,
                 email: user.email,
                 name: user.name,
             },
@@ -61,14 +58,14 @@ export const login: RequestHandler = async (req, res) => {
         res.json({
             token,
             user: {
-                id: user.id,
+                id: user._id,
                 email: user.email,
                 name: user.name,
             },
         });
 
     } catch (error) {
-        console.error(error);
+        console.error('Login error:', error);
         res.status(500).json({ message: "Server error" });
     }
 };

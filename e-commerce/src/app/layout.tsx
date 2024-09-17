@@ -30,15 +30,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable}  ${geistMono.variable} antialiased`}>  
+        className={`${geistSans.variable}  ${geistMono.variable} antialiased`}>
         <AuthProvider>
-
-        <Header /> 
-        <div className="bg-gray-100 py-8 " style={{ minHeight: "calc(100vh - 282px - 68px)" }}>
-          {children} 
+          <Header />
+          <div className="bg-gray-100 py-8 " style={{ minHeight: "calc(100vh - 282px - 68px)" }}>
+            {children}
           </div>
           <Footer />
-          </AuthProvider>
+        </AuthProvider>
       </body>
     </html>
   );

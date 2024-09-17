@@ -20,7 +20,7 @@ interface AuthContextType {
     logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 const authPaths = ["/login"];
 
@@ -39,24 +39,27 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const login = async (email: string, password: string) => {
         try {
             const res = await api.post<{ token: string, user: User }>("/login", { email, password });
+            console.log("Login Response:", res.data); // Debugging line
 
-            localStorage.setItem("token", res.data.token);
-            setUser(res.data.user);
-
-
-            router.push(redirectAfterLogin);
-            setRedirectAfterLogin("/main");
+            if (res.data.token) {
+                localStorage.setItem("token", res.data.token);
+                setUser(res.data.user);
+                router.push(redirectAfterLogin || "/");
+            } else {
+                throw new Error("Login failed. No token received.");
+            }
         } catch (err: any) {
-            console.log(err);
-            toast.error(err.message);
+            console.error("Login Error:", err); // Debugging line
+            toast.error(err.response?.data?.message || err.message || "An error occurred");
         }
     };
+
 
     const register = async (name: string, email: string, password: string) => {
         try {
             await api.post("/register", { name, email, password });
 
-            setRedirectAfterLogin("/main");
+            setRedirectAfterLogin("/");
             router.push("/login");
         } catch (err: any) {
             console.log(err);
@@ -84,6 +87,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                         Authorization: `Bearer ${token}`,
                     },
                 });
+
+                console.log(res, "resss");
+
 
                 setUser(res.data);
             } catch (err: any) {

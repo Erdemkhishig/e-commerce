@@ -1,10 +1,11 @@
-// express.d.ts
-import * as express from 'express';
+// // custom.d.ts or express.d.ts
+// import { User } from './path-to-your-user-type'; // Adjust the path as necessary
+// import 'express';
 
-declare global {
-    namespace Express {
-        interface Request {
-            user?: any; // You can define a more specific type for `user` if needed
-        }
-    }
-}
+// declare global {
+//     namespace Express {
+//         interface Request {
+//             user?: User;
+//         }
+//     }
+// }

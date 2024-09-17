@@ -1,9 +1,13 @@
+"use client"
 import { Input } from "@/components/ui/input"
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import Image from 'next/image'
+import { useAuth } from "@/app/provider/Auth.provider";
+import { FaPowerOff } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 
 import { Button } from "@/components/ui/button"
 import {
@@ -17,6 +21,7 @@ import {
 } from "@/components/ui/dialog"
 
 import Link from "next/link";
+import User from "@/app/user/page";
 const images = [
     {
         img: "/image0.png",
@@ -38,19 +43,17 @@ const images = [
 ]
 
 
-
-
-
-
 export const Header = () => {
 
+    const { user, logout } = useAuth()
 
+    console.log(user)
 
     return (
         <div className="w-full h-[68px] bg-black ">
             <div className="m-auto flex items-center justify-between h-full px-48">
-
                 <div className="flex items-center gap-4 justify-center text-white">
+
                     <Link href="/">
                         <svg width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.11038 2.76864L0.806264 10.8247C0.269142 11.833 0 12.9395 0 14.0476C0 15.1557 0.269142 16.2621 0.806264 17.2704L5.11038 25.3266C5.9037 26.8147 7.45516 27.744 9.14352 27.744H13.7153V25.4619H13.7138C12.8704 25.4619 12.0946 24.9978 11.6979 24.2539L7.39543 16.1961C7.03585 15.5245 6.85665 14.7868 6.85665 14.0476C6.85665 13.3083 7.03585 12.5706 7.39543 11.8991L11.6979 3.84136C12.0946 3.09726 12.8704 2.63341 13.7138 2.63341H13.7153V0.351074H9.14352C7.45516 0.351074 5.9037 1.28061 5.11038 2.76864Z" fill="white" />
@@ -62,6 +65,15 @@ export const Header = () => {
                     </Link>
 
                     <Link href="/category"> <p className="text-white px-8" >Ангилал</p> </Link>
+
+                    <div className="text-white flex items-center gap-2 border-2 rounded-xl px-2 border-white">
+                        <FaUser color="white" /> <p>={user?.email}</p>
+                    </div>
+
+
+                    <button onClick={logout}>
+                        <FaPowerOff size={24} color="white" />
+                    </button>
 
                 </div>
                 <Dialog>
@@ -99,12 +111,12 @@ export const Header = () => {
                                     <p className='font-bold'>{image.price}</p>
 
                                 </div>
-                            
-                            </div>
-                             ))}
 
-                       
-                        
+                            </div>
+                        ))}
+
+
+
                     </DialogContent>
                 </Dialog>
 

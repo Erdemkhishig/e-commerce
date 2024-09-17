@@ -120,6 +120,7 @@ const images = [
 
 export const Main = () => {
 
+
     return (
         <div className="max-w-screen-xl m-auto pb-24">
             <Link href="/product/id" >

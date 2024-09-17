@@ -28,7 +28,7 @@ export default function Login() {
                 <Input className="rounded-2xl bg-white" type="password" placeholder="Нууц үг" value={password}
                     onChange={(e) => setPassword(e.target.value)} />
                 {error && <p className="text-red-500">{error}</p>}
-                <button className="w-[454px] h-8 bg-blue-700 py-5 flex items-center justify-center text-white rounded-2xl" onClick={handleSubmit}> ;
+                <button className="w-[454px] h-8 bg-blue-700 py-5 flex items-center justify-center text-white rounded-2xl" onClick={handleSubmit}>
 
                     Нэвтрэх
                 </button>
@@ -43,5 +43,5 @@ export default function Login() {
             </div>
         </div>
     );
-    console.log(login)
+
 }

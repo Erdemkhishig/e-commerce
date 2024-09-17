@@ -6,6 +6,8 @@ import { categoryRouter } from "./routes/category.router";
 import { reviewRouter } from "./routes/review.router";
 import { orderRouter } from "./routes/order.router";
 import { userRouter } from "./routes/user.router";
+import { login, register } from "./controllers";
+import { authRouter } from "./routes";
 import { authMiddleware } from "./middlewares/auth.middleware"
 
 
@@ -26,6 +28,9 @@ app.use("/category", categoryRouter);
 app.use("/review", reviewRouter);
 app.use("/order", orderRouter);
 app.use("/", userRouter);
+app.use("/user", authRouter)
+app.post("/", login)
+app.post("/", register)
 
 app.listen(3001, () => {
     console.log("Server is running on http://localhost:3001");

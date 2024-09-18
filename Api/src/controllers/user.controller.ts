@@ -36,25 +36,26 @@ export const login: RequestHandler = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Find the user by email
         const user = await userModel.findOne({ email });
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        // Compare the provided password with the hashed password
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
             return res.status(400).json({ message: "Invalid credentials" });
         }
 
-        // Generate a JWT token
+        if (!process.env.JWT_SECRET) {
+            return res.status(500).json({ message: "JWT secret is not defined" });
+        }
+
         const token = jwt.sign(
             { userId: user._id, email: user.email, name: user.name },
-            process.env.JWT_SECRET as string,
-            { expiresIn: "1h" } // Adjust token expiration as needed
+            process.env.JWT_SECRET,
+            { expiresIn: "1h" }
         );
 
         return res.status(200).json({ message: "Login successful", token });

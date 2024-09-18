@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AuthProvider } from "@/app/provider/Auth.provider"
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const geistSans = localFont({
@@ -38,6 +40,7 @@ export default function RootLayout({
           </div>
           <Footer />
         </AuthProvider>
+        <ToastContainer />
       </body>
     </html>
   );

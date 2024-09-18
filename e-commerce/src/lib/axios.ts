@@ -1,8 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
-// Define the Axios instance with a base URL and default headers
 export const api: AxiosInstance = axios.create({
-    baseURL: "http://localhost:3001", // Your API base URL
+    baseURL: "https://e-commerce-m67i.onrender.com",
     headers: {
         "Content-Type": "application/json",
     },

@@ -44,6 +44,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             if (res.data.token) {
                 localStorage.setItem("token", res.data.token);
                 setUser(res.data.user);
+                toast.success("amjilttai newterlee")
                 router.push(redirectAfterLogin || "/");
             } else {
                 throw new Error("Login failed. No token received.");

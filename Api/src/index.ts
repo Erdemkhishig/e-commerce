@@ -32,6 +32,6 @@ app.use("/user", authRouter)
 app.post("/", login)
 app.post("/", register)
 
-app.listen(3001, () => {
+app.listen(() => {
     console.log("Server is running on http://localhost:3001");
 });

@@ -5,47 +5,56 @@ import Image from "next/image";
 import { FaRegHeart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 import { FaStarHalfStroke } from "react-icons/fa6";
+import Link from "next/link";
 
 import { Rate } from "@/components/Rate";
 
 const image = [
 
     {
+        id:"1",
         img: "/image8.png",
         title: "The Prompt Magazine",
         price: "120'000₮"
     },
     {
+        id:"2",
         img: "/image00.png",
         title: "Wildflower Hoodie",
         price: "120'000₮"
     },
     {
+        id:"3",
         img: "/image (5).png",
         title: "All Smiles Nalgene",
         price: "120'000₮"
     },
     {
+        id:"4",
         img: "/image (7).png",
         title: "Chunky Glyph Tee",
         price: "120'000₮"
     },
     {
+        id:"5",
         img: "/image (6).png",
         title: "The Prompt Magazine",
         price: "120'000₮"
     },
     {
+        id:"6",
         img: "/imag.png",
         title: "Chunky Glyph Tee",
         price: "120'000₮"
     },
     {
+        id:"7",
         img: "/image8.png",
         title: "The Prompt Magazine",
         price: "120'000₮"
     },
     {
+        id:"8",
         img: "/image7.png",
         title: "Chunky Glyph Tee",
         price: "120'000₮"
@@ -137,7 +146,7 @@ export default function Product() {
                 <p className="text-3xl font-bold py-16">Холбоотой бараа</p>
                 <div className="grid grid-cols-4 grid-rows-2 gap-4">
                     {image.map((image, index) => (
-                        <div key={index} className="relative">
+                           <Link key={image.id} href={`/product/${image.id}`} className="relative">
                             <div className="overflow-hidden rounded-2xl"><Image
                                 className="object-cover duration-500 hover:scale-110"
                                 src={image.img}
@@ -151,7 +160,7 @@ export default function Product() {
                                 <p>{image.title}</p>
                                 <p className="font-bold">{image.price}</p>
                             </div>
-                        </div>
+                            </Link>
                     ))}
                 </div>
             </div>

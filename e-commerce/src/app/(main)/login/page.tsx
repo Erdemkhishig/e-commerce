@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { useAuth } from "@/app/provider/Auth.provider";
+import { useAuth } from '@/components/provider/Auth.provider';
 
 export default function Login() {
     const [email, setEmail] = useState("");

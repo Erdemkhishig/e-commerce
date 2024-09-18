@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { AuthProvider } from "@/app/provider/Auth.provider"
+import { AuthProvider } from "@/components/provider/Auth.provider";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,16 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable}  ${geistMono.variable} antialiased`}>
-        <AuthProvider>
-          <Header />
-          <div className="bg-gray-100 py-8 " style={{ minHeight: "calc(100vh - 282px - 68px)" }}>
+      <body >
+       
             {children}
-          </div>
-          <Footer />
-        </AuthProvider>
-        <ToastContainer />
+     
       </body>
     </html>
   );

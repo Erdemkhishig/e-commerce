@@ -2,6 +2,7 @@ import * as React from "react"
 import Image from 'next/image'
 
 import { RiDeleteBin6Line } from "react-icons/ri";
+import Link from "next/link";
 
 
 const images = [
@@ -89,7 +90,7 @@ export const Step1 = () => {
 
                     </div>
                     <div className="w-full flex justify-end">
-                        <button className="w-[254px] h-8 bg-blue-700 py-5 rounded-3xl flex items-center justify-center text-white mb-6">Худалдан авах</button>
+                        <Link href="/order" className="w-[254px] h-8 bg-blue-700 py-5 rounded-3xl flex items-center justify-center text-white mb-6">Худалдан авах</Link>
                     </div>
 
                 </div>

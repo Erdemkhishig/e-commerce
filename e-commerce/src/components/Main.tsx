@@ -138,11 +138,11 @@ export const Main = () => {
                     </div>
                 </div>
             </Link>
-            <Link href="/product/id" >
+    
                 <div className="grid grid-cols-4 grid-rows-auto gap-4  py-8">
                     {images.map((image, index) => (
-                        <div
-                            key={index}
+                         <Link  key={image.id} href={`/product/${image.id}`}
+                           
                             className={`relative ${index === 2 || index === 3 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"}`}
                         >
                             <div>
@@ -163,10 +163,10 @@ export const Main = () => {
                                 <p className="text-sm font-medium">{image.title}</p>
                                 <p className="font-bold">{image.price}</p>
                             </div>
-                        </div>
+                       </Link>
                     ))}
                 </div>
-            </Link>
+         
         </div>
 
     )

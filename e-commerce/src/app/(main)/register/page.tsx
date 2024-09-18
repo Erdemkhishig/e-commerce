@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import React, { useState } from 'react';
-import { useAuth } from "@/app/provider/Auth.provider";
+import { useAuth } from "@/components/provider/Auth.provider";
 
 export default function Register() {
     const [isPasswordFocused, setIsPasswordFocused] = useState(false);

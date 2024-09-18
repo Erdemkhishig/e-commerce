@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import Image from 'next/image'
-import { useAuth } from "@/app/provider/Auth.provider";
+import { useAuth } from "@/components/provider/Auth.provider";
 import { FaPowerOff } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 
@@ -119,7 +119,7 @@ export const Header = () => {
                 <div className="flex gap-4 items-center">
                     <Link href="/save"><div><FaRegHeart color="white" size={20} />
                     </div></Link>
-                    <Link href="/purchase"><div><MdOutlineShoppingCart color="white" size={20} />
+                    <Link href="/cart"><div><MdOutlineShoppingCart color="white" size={20} />
                     </div></Link>
                     <Link href="/register"><Button className="border-blue-700  rounded-2xl border-2 hover:bg-blue-700">Бүртгүүлэх</Button></Link>
                     <Link href="/login"><Button className="border-blue-700  rounded-2xl border-2 hover:bg-blue-700">Нэвтрэх</Button></Link>

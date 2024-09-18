@@ -13,23 +13,7 @@ export default function Purchase() {
 
         <div className="max-w-screen-xl m-auto flex flex-col items-center justify-center gap-12 pb-96">
            <Step1/> 
-           <Step2/>
-        <Step3/>
-           <Step4/>
-      
-
-        
-            
-          
-
-           
-
-
-
-
-
-
-
+  
         </div>
 
     )

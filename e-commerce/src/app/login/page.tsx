@@ -14,8 +14,8 @@ export default function Login() {
     const handleSubmit = async () => {
         try {
             await login(email, password);
-        } catch (err: any) {
-            setError(err.message || "Login failed. Please try again.");
+        } catch (err) {
+            setError("Login failed. Please try again.");
         }
     };
 

@@ -1,6 +1,4 @@
 import * as React from "react"
-
-import Link from "next/link";
 import Image from 'next/image'
 
 import { RiDeleteBin6Line } from "react-icons/ri";

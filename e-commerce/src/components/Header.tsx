@@ -1,5 +1,4 @@
 "use client"
-import { Input } from "@/components/ui/input"
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegHeart } from "react-icons/fa";
@@ -13,15 +12,11 @@ import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
 
 import Link from "next/link";
-import User from "@/app/user/page";
+
 const images = [
     {
         img: "/image0.png",
@@ -67,7 +62,7 @@ export const Header = () => {
                     <Link href="/category"> <p className="text-white px-8" >Ангилал</p> </Link>
 
                     <div className="text-white flex items-center gap-2 border-2 rounded-xl px-2 border-white">
-                        <FaUser color="white" /> <p>={user?.email}</p>
+                        <FaUser color="white" /> <p>= {user?.name}</p>
                     </div>
 
 

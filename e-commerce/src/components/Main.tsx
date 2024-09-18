@@ -124,17 +124,17 @@ export const Main = () => {
     return (
         <div className="max-w-screen-xl m-auto pb-24">
             <Link href="/product/id" >
-                <div className='relative'>
+                <div className="relative">
                     <Image
-                        className='rounded-2xl my-8'
+                        className="rounded-2xl my-8"
                         src="/img.png"
                         width={1280}
                         height={500}
                         alt="Picture of the author"
                     />
-                    <div className='py-2 absolute top-[26rem] left-10 text-4xl'>
+                    <div className="py-2 absolute top-[26rem] left-10 text-4xl">
                         <p>Wildflower Hoodie</p>
-                        <p className='font-bold'>120'000₮</p>
+                        <p className="font-bold">120.000₮</p>
                     </div>
                 </div>
             </Link>
@@ -143,25 +143,25 @@ export const Main = () => {
                     {images.map((image, index) => (
                         <div
                             key={index}
-                            className={`relative ${index === 2 || index === 3 ? 'col-span-2 row-span-2' : 'col-span-1 row-span-1'}`}
+                            className={`relative ${index === 2 || index === 3 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"}`}
                         >
                             <div>
-                                <div className='w-full h-full overflow-hidden rounded-xl'>
+                                <div className="w-full h-full overflow-hidden rounded-xl">
                                     <Image
                                         src={image.img}
                                         alt={`Image ${index}`}
                                         width={index === 2 || index === 3 ? 800 : 400}
                                         height={index === 2 || index === 3 ? 400 : 400}
-                                        className='object-cover duration-500 hover:scale-110'
+                                        className="object-cover duration-500 hover:scale-110"
                                     />
                                 </div>
                             </div>
-                            <button className='absolute top-4 right-8'>
+                            <button className="absolute top-4 right-8">
                                 <FaRegHeart color="white" size={28} />
                             </button>
-                            <div className='py-2'>
-                                <p className='text-sm font-medium'>{image.title}</p>
-                                <p className='font-bold'>{image.price}</p>
+                            <div className="py-2">
+                                <p className="text-sm font-medium">{image.title}</p>
+                                <p className="font-bold">{image.price}</p>
                             </div>
                         </div>
                     ))}

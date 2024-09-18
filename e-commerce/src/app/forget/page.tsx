@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
     InputOTP,
     InputOTPGroup,
-    InputOTPSeparator,
     InputOTPSlot,
 } from "@/components/ui/input-otp"
 

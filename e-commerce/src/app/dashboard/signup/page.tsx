@@ -1,7 +1,6 @@
 "use client"
 import * as React from "react"
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaMicrosoft } from "react-icons/fa";
 import { IoLogoApple } from "react-icons/io5";

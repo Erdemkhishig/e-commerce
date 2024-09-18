@@ -76,7 +76,7 @@ export default function Product() {
                     {detail.map((item, index) => (
                         <div key={index}>
                             <Image
-                                className='flex justify-center items-center rounded-2xl '
+                                className="flex justify-center items-center rounded-2xl"
                                 src={item.img}
                                 width={80}
                                 height={80}
@@ -87,7 +87,7 @@ export default function Product() {
                 </div>
                 <div className="w-2/5 flex justify-center h-fit">
                     <Image
-                        className='rounded-2xl '
+                        className="rounded-2xl"
                         src="/image14.png"
                         width={450}
                         height={600}
@@ -114,7 +114,7 @@ export default function Product() {
                         <button>1</button>
                         <button className="text-2xl w-8 h-8 rounded-full border-2 border-black flex items-center justify-center p-4 ">+</button>
                     </div>
-                    <p className="font-bold text-xl">120'000₮</p>
+                    <p className="font-bold text-xl">120.000₮</p>
                     <button className="w-44 text-white bg-blue-500 h-8 border-2 border-blue-500 rounded-2xl flex items-center justify-center">Сагсанд нэмэх</button>
                     <div className="flex gap-2">
                         <p>Үнэлгээ</p>
@@ -139,17 +139,17 @@ export default function Product() {
                     {image.map((image, index) => (
                         <div key={index} className="relative">
                             <div className="overflow-hidden rounded-2xl"><Image
-                                className=' object-cover duration-500 hover:scale-110'
+                                className="object-cover duration-500 hover:scale-110"
                                 src={image.img}
                                 width={310}
                                 height={360}
                                 alt={`Image ${index}`}
                             />
                             </div>
-                            <button className='py-2 absolute top-4 right-8'><FaRegHeart color="white" size={28} /></button>
-                            <div className='flex gap-2 flex-col  py-2'>
+                            <button className="py-2 absolute top-4 right-8"><FaRegHeart color="white" size={28} /></button>
+                            <div className="flex gap-2 flex-col  py-2">
                                 <p>{image.title}</p>
-                                <p className='font-bold'>{image.price}</p>
+                                <p className="font-bold">{image.price}</p>
                             </div>
                         </div>
                     ))}

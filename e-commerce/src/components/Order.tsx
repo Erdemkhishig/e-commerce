@@ -3,14 +3,9 @@
 
 "use client"
 import * as React from "react"
-
-
-import { Input } from "@/components/ui/input"
-import Link from "next/link";
-import { Textarea } from "@/components/ui/textarea"
 import { PiCaretUpDownBold } from "react-icons/pi";
 import Image from 'next/image'
-import { FaHeart } from "react-icons/fa";
+
 
 
 

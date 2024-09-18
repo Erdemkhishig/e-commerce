@@ -48,9 +48,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             } else {
                 throw new Error("Login failed. No token received.");
             }
-        } catch (err: any) {
-            console.error("Login Error:", err); // Debugging line
-            toast.error(err.response?.data?.message || err.message || "An error occurred");
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                console.error("Login Error:", err); // Debugging line
+                toast.error(err.message || "An error occurred");
+            } else {
+                toast.error("An unknown error occurred");
+            }
         }
     };
 
@@ -61,9 +65,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
             setRedirectAfterLogin("/");
             router.push("/login");
-        } catch (err: any) {
-            console.log(err);
-            toast.error(err.response?.data?.message || "An error occurred");
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                console.log(err);
+                toast.error(err.message || "An error occurred");
+            } else {
+                toast.error("An unknown error occurred");
+            }
         }
     };
 
@@ -92,10 +100,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
 
                 setUser(res.data);
-            } catch (err: any) {
-                console.log(err);
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    console.log(err);
+                    toast.error("Your session has expired. Please login again.");
+                } else {
+                    toast.error("An unknown error occurred");
+                }
                 localStorage.removeItem("token");
-                toast.error("Your session has expired. Please login again.");
             } finally {
                 setIsReady(true);
             }

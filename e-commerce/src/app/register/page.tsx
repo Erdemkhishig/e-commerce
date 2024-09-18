@@ -1,8 +1,6 @@
-
 "use client";
 
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import React, { useState } from 'react';
 import { useAuth } from "@/app/provider/Auth.provider";
 
@@ -15,7 +13,6 @@ export default function Register() {
     const [error, setError] = useState<string | null>(null);
     const { register } = useAuth();
 
-
     const handlePasswordFocus = () => setIsPasswordFocused(true);
     const handlePasswordBlur = () => setIsPasswordFocused(false);
 
@@ -27,8 +24,12 @@ export default function Register() {
         }
         try {
             await register(name, email, password);
-        } catch (err: any) {
-            setError(err.message || 'Registration failed. Please try again.');
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message || 'Registration failed. Please try again.');
+            } else {
+                setError('Registration failed. Please try again.');
+            }
         }
     };
 

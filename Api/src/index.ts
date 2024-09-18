@@ -23,15 +23,13 @@ app.get("/", (_req, res) => {
     res.json({ message: "HelloWorld" });
 });
 
+app.use("/", userRouter);
 app.use("/product", productRouter);
 app.use("/category", categoryRouter);
 app.use("/review", reviewRouter);
 app.use("/order", orderRouter);
-app.use("/", userRouter);
 app.use("/user", authRouter)
-app.post("/", login)
-app.post("/", register)
 
-app.listen(() => {
+app.listen(3001, () => {
     console.log("Server is running on http://localhost:3001");
 });

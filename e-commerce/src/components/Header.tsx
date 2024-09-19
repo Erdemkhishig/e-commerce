@@ -62,7 +62,7 @@ export const Header = () => {
                     <Link href="/category"> <p className="text-white px-8" >Ангилал</p> </Link>
 
                     <div className="text-white flex items-center gap-2 border-2 rounded-xl px-2 border-white">
-                        <FaUser color="white" /> <p>= {user?.name}</p>
+                        <FaUser color="white" /> <p> = {user ? user.name : ""}</p>
                     </div>
 
 

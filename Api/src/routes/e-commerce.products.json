@@ -1,0 +1,518 @@
+[{
+  "_id": {
+    "$oid": "66e190a80aa7f658316f0ce6"
+  },
+  "name": "Bottle PureVis",
+  "price": 350000,
+  "description": "The LARQ Bottle PureVis™ is the world's first self-cleaning water bottle and water purification system. It uses PureVis technology to eliminate up to 99%* of bio-contaminants such as E. coli from your water and bottle.",
+  "images": [
+    "https://res.cloudinary.com/larq/image/fetch/q_auto,f_auto/https://res.cloudinary.com/larq/images/f_auto,q_auto/v1607536829/p1-mb-17-6/p1-mb-17-6.jpg?_i=AA",
+    "https://res.cloudinary.com/larq/image/fetch/q_auto,f_auto/https://res.cloudinary.com/larq/images/f_auto,q_auto/v1620409727/BDMB050A-4/BDMB050A-4.jpg?_i=AA",
+    "https://res.cloudinary.com/larq/image/fetch/q_auto,f_auto/https://res.cloudinary.com/larq/images/f_auto,q_auto/v1607536834/p1-mb-17-1/p1-mb-17-1.jpg?_i=AA",
+    "https://res.cloudinary.com/larq/image/fetch/q_auto,f_auto/https://res.cloudinary.com/larq/images/f_auto,q_auto/v1638225402/p1-mb-17-2-white-q/p1-mb-17-2-white-q.jpg?_i=AA"
+  ],
+  "salePercent": 15,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16207b52b6d708dca120c"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:44:24.389Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T02:59:18.454Z"
+  },
+  "__v": 0,
+  "qty": {
+    "free": 120
+  }
+},
+{
+  "_id": {
+    "$oid": "66e191650aa7f658316f0ce8"
+  },
+  "name": "Women's R&R Hoodie",
+  "price": 413000,
+  "description": "Cut to sit just past the shoulders and right at the hip, with ribbed cuffs that frame cinch the wrists and hit the waist for some extra texture. Everyday comfort, with a soft but structured handfeel.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-02.jpg?v=1634940141",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-03.jpg?v=1634940142",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-01.jpg?v=1634940141",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-04.jpg?v=1634940142",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-05.jpg?v=1634940142"
+  ],
+  "salePercent": 50,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16237b52b6d708dca1210"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:47:33.403Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T03:06:18.046Z"
+  },
+  "__v": 0,
+  "qty": {
+    "free": 10,
+    "s": 10,
+    "m": 10,
+    "l": 10,
+    "xl": 10,
+    "2xl": 10,
+    "3xl": 10
+  }
+},
+{
+  "_id": {
+    "$oid": "66e1920b0aa7f658316f0cea"
+  },
+  "name": "Men's Full Zip Hoodie",
+  "price": 423000,
+  "description": "We prioritized natural materials like hemp, TENCEL™ Lyocell, and organic pima cotton from Peru—each grown without harsh chemicals to keep the planet and its people healthier.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_A.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_D.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_B.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_C.png?v=1714692961"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16237b52b6d708dca1210"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:50:19.820Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T03:08:36.055Z"
+  },
+  "__v": 0,
+  "qty": {
+    "2xl": 10,
+    "m": 10,
+    "s": 10,
+    "free": 0,
+    "l": 0,
+    "xl": 0,
+    "3xl": 0
+  }
+},
+{
+  "_id": {
+    "$oid": "66e192740aa7f658316f0cec"
+  },
+  "name": "Men's R&R Hoodie",
+  "price": 413000,
+  "description": "So, why is hemp so great? It’s nature’s super fabric — using less pesticides, fertilizer and water than most other crops. Add in the fact that it’s also naturally breathable with antimicrobial properties and it’s a natural winner.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/PDP-Grid-Marketing-M-Hoodie_2bd016e2-874d-43e4-ab99-2665ce3a2715.jpg?v=1634939524",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Men-Black-02.png?v=1634939524",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Men-Black-04.png?v=1634939524",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Men-Black-05.png?v=1634939524"
+  ],
+  "salePercent": 45,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16237b52b6d708dca1210"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:52:04.537Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:49:43.323Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e193360aa7f658316f0cee"
+  },
+  "name": "Men's Mother Nature",
+  "price": 78000,
+  "description": "Made with 100% recycled materials, Comfy, everyday style.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Men-RecycledTee-_MotherNature-White.png?v=1702510681",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/A10711M002-Graphic_SS-Mother_Nature-Tee-Front-Global-Mens-Natural_White_afc457a3-3ba8-4f6b-88a6-2e3ded15a28f.png?v=1702510681",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/A10711M002-Graphic_SS-Mother_Nature-Tee-Back-Global-Mens-Natural_White_b868399e-c2e3-472c-aa17-1f97ba3f486a.png?v=1702510681"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16242b52b6d708dca1212"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:55:18.735Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:50:46.196Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e193c00aa7f658316f0cf0"
+  },
+  "name": "Men's Organic Tee",
+  "price": 113000,
+  "description": "A timeless crew neck with a hint of Allbirds pride. The Organic Cotton Tee is designed to be classic and destined to be a favorite.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Allgood_Cotton_Logo_Tee_Blizzard_M_0026_c869ae3a-1730-4773-9da9-3528d71262e1.png?v=1693261380",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Allgood_Cotton_Logo_Tee_Blizzard_M_0309_284ce7f2-8999-457e-8405-05a83f6a012f.png?v=1693261380",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Allgood_Cotton_Logo_Tee_Blizzard_M_0413_35978687-9b4b-40c7-9a5e-41662a7f8237.png?v=1693261380",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Allgood_Cotton_Logo_Tee_Blizzard_M_0333_e1ec268e-4b75-4d90-a16d-334ccfa0a9a9.png?v=1693261380"
+  ],
+  "salePercent": 5,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16242b52b6d708dca1212"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:57:36.764Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:50:50.741Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e194610aa7f658316f0cf2"
+  },
+  "name": "Women's Soft Sleeve Tee",
+  "price": 168000,
+  "description": "Tencel™ Lyocell and merino wool are durable and naturally breathable. Organic cotton completes this material trifecta for a tee that can keep up with pretty much anything.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Anytime_Long_Sleeve_Tee_Natural_White_F_0024.png?v=1692823696",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Anytime_Long_Sleeve_Tee_Natural_White_F_0313.png?v=1692823696",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Anytime_Long_Sleeve_Tee_Natural_White_F_0239.png?v=1692823696",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Anytime_Long_Sleeve_Tee_Natural_White_F_0171.png?v=1692823696"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16242b52b6d708dca1212"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T13:00:17.544Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:51:01.276Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e19debe1583637fb428233"
+  },
+  "name": "Women's R&R Hoodie",
+  "price": 413000,
+  "description": "Cut to sit just past the shoulders and right at the hip, with ribbed cuffs that frame cinch the wrists and hit the waist for some extra texture. Everyday comfort, with a soft but structured handfeel.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-02.jpg?v=1634940141",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-03.jpg?v=1634940142",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-01.jpg?v=1634940141",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-04.jpg?v=1634940142",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-05.jpg?v=1634940142"
+  ],
+  "salePercent": 50,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16237b52b6d708dca1210"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:47:33.403Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T02:52:58.726Z"
+  },
+  "__v": 0,
+  "qty": {
+    "free": 67,
+    "xl": 12
+  }
+},
+{
+  "_id": {
+    "$oid": "66e19df0e1583637fb428234"
+  },
+  "name": "Men's Full Zip Hoodie",
+  "price": 423000,
+  "description": "We prioritized natural materials like hemp, TENCEL™ Lyocell, and organic pima cotton from Peru—each grown without harsh chemicals to keep the planet and its people healthier.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_A.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_D.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_B.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_C.png?v=1714692961"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16237b52b6d708dca1210"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:50:19.820Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:51:34.542Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e19e5de1583637fb428237"
+  },
+  "name": "Allgood Cotton Cap",
+  "price": 96000,
+  "description": "Lightweight, bouncy, and wildly comfortable, Allbirds shoes make any outing feel effortless. Slip in, lace up, or slide them on and enjoy the comfy support.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/AB-Q3-Cap-Black-1.png?v=1689620683",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/AB-Q3-Cap-Black-2.png?v=1689620683"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e15ffca2bf0426a15205ee"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T13:06:28.433Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:52:10.073Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e19e68e1583637fb428238"
+  },
+  "name": "Women's Tree Dasher 2",
+  "price": 527000,
+  "description": "Our proprietary knit feels lightweight, breathable, and pleasantly cool for long walks, gym sessions, workout classes, and light jogs thanks to a tree fiber material blend.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/AA000YM_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHER_2.0_Natural_Black_Blizzard_e42e8a8e-ac32-4f71-aaaf-45c5c9dc6124.png?v=1707181391",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/AA000YM_SHOE_PAIR_GLOBAL_MENS_TREE_DASHER_2.0_Natural_Black_Blizzard_ae9f687b-5c49-40b3-a45a-0e86b2886f5e.png?v=1707181391",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/AA000YM_SHOE_PUDDLE_GUARD_GLOBAL_MENS_TREE_DASHER_2.0_Natural_Black_Blizzard_708efe1c-04f9-4d18-bdaa-d5a11581b78a.png?v=1707181391"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16251b52b6d708dca1214"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T13:07:43.720Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:53:08.862Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e19fbce1583637fb428239"
+  },
+  "name": "Men's R&R Hoodie",
+  "price": 413000,
+  "description": "So, why is hemp so great? It’s nature’s super fabric — using less pesticides, fertilizer and water than most other crops. Add in the fact that it’s also naturally breathable with antimicrobial properties and it’s a natural winner.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/PDP-Grid-Marketing-M-Hoodie_2bd016e2-874d-43e4-ab99-2665ce3a2715.jpg?v=1634939524",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Men-Black-02.png?v=1634939524",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Men-Black-04.png?v=1634939524",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Men-Black-05.png?v=1634939524"
+  ],
+  "salePercent": 45,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16237b52b6d708dca1210"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:52:04.537Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:53:50.039Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e19fc4e1583637fb42823a"
+  },
+  "name": "Men's Full Zip Hoodie",
+  "price": 423000,
+  "description": "We prioritized natural materials like hemp, TENCEL™ Lyocell, and organic pima cotton from Peru—each grown without harsh chemicals to keep the planet and its people healthier.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_A.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_D.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_B.png?v=1714692961",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/files/A10840_S24Q1_Anytime_Fullzip_Rugged_Green_C.png?v=1714692961"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16237b52b6d708dca1210"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:50:19.820Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:53:59.658Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e19fd0e1583637fb42823b"
+  },
+  "name": "Men's Organic Tee",
+  "price": 113000,
+  "description": "A timeless crew neck with a hint of Allbirds pride. The Organic Cotton Tee is designed to be classic and destined to be a favorite.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Allgood_Cotton_Logo_Tee_Blizzard_M_0026_c869ae3a-1730-4773-9da9-3528d71262e1.png?v=1693261380",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Allgood_Cotton_Logo_Tee_Blizzard_M_0309_284ce7f2-8999-457e-8405-05a83f6a012f.png?v=1693261380",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Allgood_Cotton_Logo_Tee_Blizzard_M_0413_35978687-9b4b-40c7-9a5e-41662a7f8237.png?v=1693261380",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Allgood_Cotton_Logo_Tee_Blizzard_M_0333_e1ec268e-4b75-4d90-a16d-334ccfa0a9a9.png?v=1693261380"
+  ],
+  "salePercent": 5,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16216b52b6d708dca120e"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:57:36.764Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:54:54.198Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e19fdfe1583637fb42823c"
+  },
+  "name": "Women's Soft Sleeve Tee",
+  "price": 168000,
+  "description": "Tencel™ Lyocell and merino wool are durable and naturally breathable. Organic cotton completes this material trifecta for a tee that can keep up with pretty much anything.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Anytime_Long_Sleeve_Tee_Natural_White_F_0024.png?v=1692823696",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Anytime_Long_Sleeve_Tee_Natural_White_F_0313.png?v=1692823696",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Anytime_Long_Sleeve_Tee_Natural_White_F_0239.png?v=1692823696",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Anytime_Long_Sleeve_Tee_Natural_White_F_0171.png?v=1692823696"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16216b52b6d708dca120e"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T13:00:17.544Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:55:04.181Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e19ff6e1583637fb42823d"
+  },
+  "name": "Allgood Cotton Cap",
+  "price": 96000,
+  "description": "Lightweight, bouncy, and wildly comfortable, Allbirds shoes make any outing feel effortless. Slip in, lace up, or slide them on and enjoy the comfy support.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/AB-Q3-Cap-Black-1.png?v=1689620683",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/AB-Q3-Cap-Black-2.png?v=1689620683"
+  ],
+  "salePercent": 0,
+  "viewsCount": 0,
+  "category": [],
+  "createdAt": {
+    "$date": "2024-09-11T13:06:28.433Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T13:06:28.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1a000e1583637fb42823e"
+  },
+  "name": "Bottle PureVis",
+  "price": 350000,
+  "description": "The LARQ Bottle PureVis™ is the world's first self-cleaning water bottle and water purification system. It uses PureVis technology to eliminate up to 99%* of bio-contaminants such as E. coli from your water and bottle.",
+  "images": [
+    "https://res.cloudinary.com/larq/image/fetch/q_auto,f_auto/https://res.cloudinary.com/larq/images/f_auto,q_auto/v1607536829/p1-mb-17-6/p1-mb-17-6.jpg?_i=AA",
+    "https://res.cloudinary.com/larq/image/fetch/q_auto,f_auto/https://res.cloudinary.com/larq/images/f_auto,q_auto/v1620409727/BDMB050A-4/BDMB050A-4.jpg?_i=AA",
+    "https://res.cloudinary.com/larq/image/fetch/q_auto,f_auto/https://res.cloudinary.com/larq/images/f_auto,q_auto/v1607536834/p1-mb-17-1/p1-mb-17-1.jpg?_i=AA",
+    "https://res.cloudinary.com/larq/image/fetch/q_auto,f_auto/https://res.cloudinary.com/larq/images/f_auto,q_auto/v1638225402/p1-mb-17-2-white-q/p1-mb-17-2-white-q.jpg?_i=AA"
+  ],
+  "salePercent": 15,
+  "viewsCount": 0,
+  "category": [],
+  "createdAt": {
+    "$date": "2024-09-11T12:44:24.389Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T12:44:24.389Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1a00ee1583637fb42823f"
+  },
+  "name": "Women's R&R Hoodie",
+  "price": 413000,
+  "description": "Cut to sit just past the shoulders and right at the hip, with ribbed cuffs that frame cinch the wrists and hit the waist for some extra texture. Everyday comfort, with a soft but structured handfeel.",
+  "images": [
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-02.jpg?v=1634940141",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-03.jpg?v=1634940142",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1776,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-01.jpg?v=1634940141",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-04.jpg?v=1634940142",
+    "https://cdn.allbirds.com/image/fetch/q_auto,f_auto/w_1539,f_auto,q_auto/https://www.allbirds.com/cdn/shop/products/Hoodie-Women-Black-05.jpg?v=1634940142"
+  ],
+  "salePercent": 50,
+  "viewsCount": 0,
+  "category": [
+    {
+      "$oid": "66e16237b52b6d708dca1210"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T12:47:33.403Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T01:54:15.742Z"
+  },
+  "__v": 0
+}]

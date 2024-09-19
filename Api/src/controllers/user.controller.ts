@@ -32,6 +32,7 @@ export const register: RequestHandler = async (req, res) => {
     }
 };
 
+
 export const login: RequestHandler = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -45,7 +46,7 @@ export const login: RequestHandler = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
-            return res.status(400).json({ message: "Invalid credentials" });
+            return res.status(400).json({ message: "Password incorrect" });
         }
 
         if (!process.env.JWT_SECRET) {
@@ -58,9 +59,10 @@ export const login: RequestHandler = async (req, res) => {
             { expiresIn: "1h" }
         );
 
-        return res.status(200).json({ message: "Login successful", token });
+        return res.status(200).json({ message: "Login successful", token, user });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Error logging in" });
     }
 };
+

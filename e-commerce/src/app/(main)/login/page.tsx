@@ -15,9 +15,14 @@ export default function Login() {
         try {
             await login(email, password);
         } catch (err) {
-            setError("Login failed. Please try again.");
+            if (err instanceof Error) {
+                setError(err.message); // Display the specific error message
+            } else {
+                setError("Login failed. Please try again."); // Fallback message
+            }
         }
     };
+
 
     return (
         <div className="max-w-screen-xl m-auto flex flex-col items-center justify-center gap-12 pb-80">

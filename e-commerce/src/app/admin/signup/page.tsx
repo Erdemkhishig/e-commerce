@@ -33,7 +33,7 @@ export default function Signup() {
                     <path d="M32.1089 13.6198L27.6788 5.31679C26.8618 3.783 25.2652 2.82495 23.5271 2.82495H18.8211V5.17718H18.823C19.6911 5.17718 20.4896 5.65545 20.8979 6.42235L25.3265 14.7268C25.6964 15.4192 25.8808 16.1793 25.8808 16.9413C25.8808 17.7033 25.6964 18.4635 25.3265 19.1558L20.8979 27.4603C20.4896 28.2272 19.6911 28.7051 18.823 28.7051H18.8211V31.0574H23.5271C25.2652 31.0574 26.8618 30.0997 27.6788 28.5659L32.1089 20.2629C32.6617 19.224 32.939 18.0834 32.939 16.9413C32.939 15.7993 32.6617 14.6591 32.1089 13.6198Z" fill="black" />
                 </svg>
             </div>
-            <div className="w-[35%] flex justify-center items-center flex-col gap-8 border-2 p-12 rounded-xl">
+            <div className="w-[35%] flex justify-center items-center flex-col gap-8 border-2 p-12 rounded-xl bg-white">
                 <p className="text-2xl font-black">Бүртгүүлэх</p>
                 <div className="flex flex-col items-start w-full"> <p>Таны имэйл</p>
                     <Input className="bg-white rounded-2xl" type="text" placeholder="Имэйл хаяг" />
@@ -62,7 +62,7 @@ export default function Signup() {
                 </div>
                 <div className="flex">
                     <p>Бүртгэлтэй юу?</p>
-                    <button className="underline">Нэвтрэх</button>
+                    <button className="underline px-2">Нэвтрэх</button>
 
                 </div>
             </div>

@@ -4,6 +4,8 @@ import { api } from "@/lib/axios";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, createContext, useContext, ReactNode } from "react";
 import { toast } from "react-toastify";
+import { AxiosError } from "axios";
+
 
 
 interface User {
@@ -36,28 +38,34 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [isReady, setIsReady] = useState(false);
     const [redirectAfterLogin, setRedirectAfterLogin] = useState<string>("");
 
+
     const login = async (email: string, password: string) => {
         try {
-            const res = await api.post<{ token: string, user: User }>("/login", { email, password });
-            console.log("Login Response:", res.data); // Debugging line
+            const res = await api.post<{ token: string; user: User }>("/login", { email, password });
 
             if (res.data.token) {
                 localStorage.setItem("token", res.data.token);
-                setUser(res.data.user);
-                toast.success("amjilttai newterlee")
-                router.push(redirectAfterLogin || "/");
+                setUser(res.data.user); // Assuming you have setUser from context or state
+                toast.success("Login successful");
+                router.push(redirectAfterLogin || "/"); // Assuming redirectAfterLogin is defined
             } else {
                 throw new Error("Login failed. No token received.");
             }
         } catch (err: unknown) {
-            if (err instanceof Error) {
-                console.error("Login Error:", err); // Debugging line
-                toast.error(err.message || "An error occurred");
+            if (err instanceof AxiosError) {
+                if (err.response?.status === 404 && err.response.data.message === "User not found") {
+                    toast.error("User not found");
+                } else if (err.response?.status === 400 && err.response.data.message === "Password incorrect") {
+                    toast.error("Password incorrect");
+                }
             } else {
                 toast.error("An unknown error occurred");
             }
+            console.error("Login Error:", err);
         }
     };
+
+
 
 
     const register = async (name: string, email: string, password: string) => {
@@ -116,6 +124,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         loadUser();
     }, []);
+
 
     useEffect(() => {
         if (authPaths.includes(pathname)) return;

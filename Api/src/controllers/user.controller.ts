@@ -1,68 +1,20 @@
-import { RequestHandler } from "express";
-import { userModel } from "../models";
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv'
-dotenv.config()
+import { Request, Response } from 'express';
 
+interface CustomRequest extends Request {
+    user?: any;
+}
 
-export const register: RequestHandler = async (req, res) => {
-    const { name, email, password } = req.body;
-
+const getMe = async (req: CustomRequest, res: Response): Promise<void> => {
     try {
-        const existingUser = await userModel.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: "User already exists" });
-        }
+        const user = req.user;
 
-        const newUser = new userModel({ name, email, password });
-        await newUser.save();
-
-        res.status(201).json({
-            message: "User registered successfully",
-            user: {
-                name: newUser.name,
-                email: newUser.email,
-            }
-        });
-
+        res.json(user);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Server error" });
+        res.status(500).json({ error: "Internal Server Error" });
     }
 };
 
+export { getMe };
 
-export const login: RequestHandler = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-
-        const user = await userModel.findOne({ email });
-
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        const isMatch = await bcrypt.compare(password, user.password);
-
-        if (!isMatch) {
-            return res.status(400).json({ message: "Password incorrect" });
-        }
-
-        if (!process.env.JWT_SECRET) {
-            return res.status(500).json({ message: "JWT secret is not defined" });
-        }
-
-        const token = jwt.sign(
-            { userId: user._id, email: user.email, name: user.name },
-            process.env.JWT_SECRET,
-            { expiresIn: "1h" }
-        );
-
-        return res.status(200).json({ message: "Login successful", token, user });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: "Error logging in" });
-    }
-};
 

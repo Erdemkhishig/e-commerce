@@ -39,7 +39,7 @@ export default function Forget() {
                 </div>
 
                 <p className="text-2xl font-black">Баталгаажуулах</p>
-                <p>“mujo@nest.edu.mn” хаягт илгээсэн баталгаажуулах кодыг оруулна уу</p>
+                <p>“pinecone@nest.edu.mn” хаягт илгээсэн баталгаажуулах кодыг оруулна уу</p>
                 <InputOTP className="bg-gray-400 " maxLength={4}>
                     <InputOTPGroup className="bg-white rounded-2xl" >
                         <InputOTPSlot className="p-8 space-x-12" index={0} />

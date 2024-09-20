@@ -1,13 +1,18 @@
 import { PropsWithChildren } from "react";
 import { Head } from "@/app/admin/Head";
+import Aside from "./Aside";
+
 
 const Layout = ({ children }: PropsWithChildren) => {
-  return <>
+  return <body>
     <Head />
-    <div className="bg-gray-100">
-      {children}
-    </div>;
-  </>
+    <div className="flex">
+      <Aside />
+      <div className="bg-gray-100 w-[85%] pl-12">
+        {children}
+      </div>
+    </div>
+  </body>
 };
 
 export default Layout;

@@ -1,12 +1,12 @@
-import { Router } from "express";
-import {
-    register,
-    login
-} from "../controllers"
+
+
+import { getMe } from "../controllers";
+
+const { Router } = require("express");
 
 const userRouter = Router();
 
-userRouter.post("/login", login).post("/register", register);
+userRouter.get("/me", getMe);
 
 export { userRouter };
 

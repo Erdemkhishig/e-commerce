@@ -11,15 +11,19 @@ const productSchema = new Schema({
         required: true,
     },
     image: {
-        type: String,
+        type: [String],
         required: false,
     },
     category: {
-        type: String,
+        type: [String],
         required: false,
     },
     color: {
         type: String,
+        required: false,
+    },
+    qty: {
+        type: Number,
         required: false,
     },
     size: {

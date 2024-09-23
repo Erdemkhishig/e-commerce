@@ -8,7 +8,7 @@ const Layout = ({ children }: PropsWithChildren) => {
     <Head />
     <div className="flex">
       <Aside />
-      <div className="bg-gray-100 w-[85%] pl-12">
+      <div className="bg-gray-100 w-[85%]">
         {children}
       </div>
     </div>

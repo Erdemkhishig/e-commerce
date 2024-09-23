@@ -31,7 +31,7 @@ export default function Dashboard() {
 
     return (
 
-        <div className="w-full m-auto flex gap-8">
+        <div className="w-full m-auto flex gap-8 pl-12">
 
             <div className="w-1/2" >
                 <div className="w-full h-fit my-8 border-black rounded-xl bg-white flex flex-col gap-6 p-8">

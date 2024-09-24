@@ -24,7 +24,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
-const authPaths = ["/login"];
+const authPaths = ["/auth/login"];
 
 interface AuthProviderProps {
     children: ReactNode;
@@ -41,13 +41,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const login = async (email: string, password: string) => {
         try {
-            const res = await api.post<{ token: string; user: User }>("/login", { email, password });
+            const res = await api.post<{ token: string; user: User }>("/auth/login", { email, password });
 
             if (res.data.token) {
                 localStorage.setItem("token", res.data.token);
-                setUser(res.data.user); // Assuming you have setUser from context or state
+                setUser(res.data.user);
                 toast.success("Login successful");
-                router.push(redirectAfterLogin || "/"); // Assuming redirectAfterLogin is defined
+                router.push(redirectAfterLogin || "/");
             } else {
                 throw new Error("Login failed. No token received.");
             }
@@ -70,10 +70,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const register = async (name: string, email: string, password: string) => {
         try {
-            await api.post("/register", { name, email, password });
+            await api.post("/auth/register", { name, email, password });
 
             setRedirectAfterLogin("/");
-            router.push("/login");
+            router.push("/");
         } catch (err: unknown) {
             if (err instanceof Error) {
                 console.log(err);

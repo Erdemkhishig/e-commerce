@@ -29,6 +29,7 @@ import Link from "next/link";
 
 
 export default function Product() {
+
     return (
         <div>
             <div className="flex gap-4 border-b-2 w-full h-16 items-center px-4">

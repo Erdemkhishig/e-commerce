@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const productSchema = new Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -16,10 +20,6 @@ const productSchema = new Schema({
     },
     category: {
         type: [String],
-        required: false,
-    },
-    color: {
-        type: String,
         required: false,
     },
     qty: {

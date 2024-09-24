@@ -16,9 +16,9 @@ export default function Login() {
             await login(email, password);
         } catch (err) {
             if (err instanceof Error) {
-                setError(err.message); // Display the specific error message
+                setError(err.message);
             } else {
-                setError("Login failed. Please try again."); // Fallback message
+                setError("Login failed. Please try again.");
             }
         }
     };

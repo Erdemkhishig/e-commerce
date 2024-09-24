@@ -20,13 +20,13 @@ export default function Aside() {
                 <Link href="/admin/orders" className={`p-4 flex gap-2 items-center justify-start ${pathname === '/admin/orders' ? 'bg-gray-300' : ''}`}>
                     <SlNotebook size={28} />Захиалга
                 </Link>
-                <Link href="/income" className={`p-4 flex gap-2 items-center justify-start ${pathname === '/income' ? 'bg-gray-300' : ''}`}>
+                <Link href="" className={`p-4 flex gap-2 items-center justify-start ${pathname === '/income' ? 'bg-gray-300' : ''}`}>
                     <HiTag size={28} />Орлого
                 </Link>
                 <Link href="/admin/product" className={`p-4 flex gap-2 items-center justify-start ${pathname.startsWith('/admin/product') ? 'bg-gray-300' : ''}`}>
                     <PiListDashesFill size={28} />Бүтээгдэхүүн
                 </Link>
-                <Link href="/settings" className={`p-4 flex gap-2 items-center justify-start ${pathname === '/settings' ? 'bg-gray-300' : ''}`}>
+                <Link href="" className={`p-4 flex gap-2 items-center justify-start ${pathname === '/settings' ? 'bg-gray-300' : ''}`}>
                     <RiSettings5Fill size={28} />Тохиргоо
                 </Link>
             </div>

@@ -15,6 +15,4 @@ const getMe = async (req: CustomRequest, res: Response): Promise<void> => {
     }
 };
 
-export { getMe };
-
-
+export { getMe }

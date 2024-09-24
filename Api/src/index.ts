@@ -6,10 +6,10 @@ import { categoryRouter } from "./routes/category.router";
 import { reviewRouter } from "./routes/review.router";
 import { orderRouter } from "./routes/order.router";
 import { userRouter } from "./routes/user.router";
-import { authRouter } from "./routes";
 import { authMiddleware } from "./middlewares/auth.middleware";
 import { v2 as cloudinary } from "cloudinary";
 import Multer, { memoryStorage } from "multer";
+import { authRouter } from "./routes";
 
 
 
@@ -30,7 +30,7 @@ app.use("/product", productRouter);
 app.use("/category", categoryRouter);
 app.use("/review", reviewRouter);
 app.use("/order", orderRouter);
-app.use("/user", authRouter)
+app.use("/auth", authRouter)
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,

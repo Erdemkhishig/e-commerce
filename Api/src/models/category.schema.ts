@@ -7,10 +7,11 @@ const categorySchema = new Schema({
         type: String,
         required: true,
     },
-    productId: {
-        type: String,
-        required: false,
-    },
+    // productId: {
+    //     type: Schema.Types.ObjectId,
+    //     ref:"Product",
+    //     required: false,
+    // },
     createdAt: {
         type: Date,
         required: true,

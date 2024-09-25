@@ -52,6 +52,26 @@ export default function Add() {
 
     };
 
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedSize, setSelectedSize] = useState('');
+
+    const handleCategorySelect = (category: string) => {
+        setSelectedCategory(category);
+        setFormData((prevData) => ({
+            ...prevData,
+            category: category,
+        }));
+    };
+
+    const handleSizeSelect = (size: string) => {
+        setSelectedSize(size);
+        setFormData((prevData) => ({
+            ...prevData,
+            size: size,
+        }));
+    };
+
+
     return (
 
         <form onSubmit={handleSubmit}>
@@ -127,28 +147,16 @@ export default function Add() {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button className="flex justify-between bg-white" variant="outline">
-                                    Сонгох <FaAngleDown size={20} /></Button>
+                                    {selectedCategory || 'Сонгох'} <FaAngleDown size={20} />
+                                </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56">
                                 <DropdownMenuGroup>
-                                    <DropdownMenuItem>
-                                        <span>Малгай</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                        <span>T-shirt</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                        <span>Hoodie</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                        <span>Цүнх</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                        <span>Гутал</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                        <span>Усны сав</span>
-                                    </DropdownMenuItem>
+                                    {['Малгай', 'T-shirt', 'Hoodie', 'Цүнх', 'Гутал', 'Усны сав', 'Өмд'].map((category) => (
+                                        <DropdownMenuItem key={category} onClick={() => handleCategorySelect(category)}>
+                                            <span>{category}</span>
+                                        </DropdownMenuItem>
+                                    ))}
                                 </DropdownMenuGroup>
                             </DropdownMenuContent>
                         </DropdownMenu>
@@ -161,18 +169,16 @@ export default function Add() {
 
                             <div className="flex gap-8 items-center">
 
-                                <Select>
+                                <Select onValueChange={handleSizeSelect}>
                                     <SelectTrigger className="w-[72px]">
-                                        <SelectValue placeholder={<FaPlusCircle size={24} />} />
+                                        <SelectValue placeholder={selectedSize || <FaPlusCircle size={24} />} />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
                                             <SelectLabel>Хэмжээ</SelectLabel>
-                                            <SelectItem value="apple">S</SelectItem>
-                                            <SelectItem value="banana">M</SelectItem>
-                                            <SelectItem value="blueberry">L</SelectItem>
-                                            <SelectItem value="grapes">XL</SelectItem>
-                                            <SelectItem value="pineapple">Free</SelectItem>
+                                            {['S', 'M', 'L', 'XL', 'Free'].map((size) => (
+                                                <SelectItem key={size} value={size}>{size}</SelectItem>
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>

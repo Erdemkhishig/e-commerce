@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import { MdDelete } from "react-icons/md";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaPlusCircle } from "react-icons/fa";
 import {
@@ -7,10 +8,10 @@ import {
     DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import * as React from "react"
+} from "@/components/ui/dropdown-menu";
+import * as React from "react";
 import { CiImageOn } from "react-icons/ci";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import { FaAngleDown } from "react-icons/fa";
 import {
     Select,
@@ -20,23 +21,42 @@ import {
     SelectLabel,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import { useProduct } from '@/contexts/Productcontext';
+import { useFileUpload } from '@/contexts/Uploadcontext';
 import { useState } from "react";
-import { log } from "console";
+import Image from 'next/image';
+
+interface FormData {
+    name: string;
+    title: string;
+    price: string;
+    image: string[]; // Change this to string[]
+    category: string;
+    qty: string;
+    size: string;
+    rating: string;
+}
 
 export default function Add() {
     const { createProduct } = useProduct();
-    const [formData, setFormData] = useState({
+    const { uploadFile, uploadUrl, error } = useFileUpload();
+
+    const [formData, setFormData] = useState<FormData>({
         name: '',
         title: '',
         price: '',
-        image: '',
+        image: [], // Ensure this is an array of strings
         category: '',
         qty: '',
         size: '',
         rating: '',
     });
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [isUploading, setIsUploading] = useState<boolean>(false);
+    const [selectedCategory, setSelectedCategory] = useState<string>('');
+    const [selectedSize, setSelectedSize] = useState<string>('');
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -45,15 +65,61 @@ export default function Add() {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        console.log(formData)
-        e.preventDefault();
-        await createProduct(formData);
-
+    const handleDeleteImage = (index: number) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            image: prevData.image.filter((_, i) => i !== index), // Remove the image at the specified index
+        }));
     };
 
-    const [selectedCategory, setSelectedCategory] = useState('');
-    const [selectedSize, setSelectedSize] = useState('');
+    const handleUpload = async (file: File) => {
+        setIsUploading(true);
+        await uploadFile(file);
+        setIsUploading(false);
+    };
+
+    const [imageFiles, setImageFiles] = useState<File[]>([]);
+
+    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (files) {
+            const uploadedImages: string[] = [];
+
+            // Check if the current number of images is less than 4
+            if (formData.image.length >= 4) {
+                alert("You can only upload up to 4 images.");
+                return;
+            }
+
+            for (const file of Array.from(files)) {
+                if (uploadedImages.length + formData.image.length >= 4) {
+                    alert("You can only upload up to 4 images.");
+                    break; // Stop adding more files if limit is reached
+                }
+
+                try {
+                    const url = await uploadFile(file);
+                    uploadedImages.push(url as string);
+                } catch (error) {
+                    console.error('Error uploading file:', error);
+                }
+            }
+
+            // Combine existing images with newly uploaded images
+            const newImages = [...formData.image, ...uploadedImages].slice(0, 4); // Ensure we don't exceed 4
+            setFormData((prevData) => ({
+                ...prevData,
+                image: newImages
+            }));
+        }
+    };
+
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        await createProduct(formData);
+    };
 
     const handleCategorySelect = (category: string) => {
         setSelectedCategory(category);
@@ -71,72 +137,120 @@ export default function Add() {
         }));
     };
 
-
     return (
-
         <form onSubmit={handleSubmit}>
             <div className="flex bg-white p-2 items-center justify-start gap-4 py-4">
-                <p><IoIosArrowBack />
-                </p>
+                <p><IoIosArrowBack /></p>
                 <p>Бүтээгдэхүүн нэмэх</p>
             </div>
 
             <div className="flex gap-8 w-full m-auto pl-12">
-
-                <div className="w-1/2 flex flex-col gap-4" >
+                <div className="w-1/2 flex flex-col gap-4">
                     <div className="w-full h-fit my-8 border-black rounded-xl bg-white flex flex-col gap-6 p-8">
-                        <div className="flex flex-col gap-4"><p className="font-semibold">Бүтээгдэхүүний нэр</p><input
-                            name="name"
-                            placeholder="Нэр"
-                            className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
-                            type="text"
-                            value={formData.name}
-                            onChange={handleChange}
-                        /></div>
-                        <div className="flex flex-col gap-4"><p className="font-semibold">Нэмэлт мэдээлэл</p> <input
-                            name="title"
-                            placeholder="Гол онцлог"
-                            className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
-                            type="text"
-                            value={formData.title}
-                            onChange={handleChange}
-                        /></div>
-
-                    </div>
-                    <div className="w-full rounded-xl bg-white flex flex-col gap-4 py-8">
-                        <p className="px-8 font-semibold text-xl">Бүтээгдэхүүний зураг</p>
-                        <div className="w-full rounded-xl bg-white px-8 flex gap-4">
-                            <div className="h-52 w-60 border-dashed border-2 rounded-xl flex justify-center items-center">
-                                <CiImageOn size={32} />
-                            </div>
-                            <div className="h-52 w-60 border-dashed border-2 rounded-xl flex justify-center items-center">
-                                <CiImageOn size={32} />
-                            </div>
-                            <div className="h-52 w-60 border-dashed border-2 rounded-xl flex justify-center items-center">
-                                <CiImageOn size={32} />
-                            </div>
-                            <button className="h-52 w-60  rounded-xl flex justify-center items-center">
-                                <FaPlusCircle size={32} />
-                            </button>
+                        <div className="flex flex-col gap-4">
+                            <p className="font-semibold">Бүтээгдэхүүний нэр</p>
+                            <input
+                                name="name"
+                                placeholder="Нэр"
+                                className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
+                                type="text"
+                                value={formData.name}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            <p className="font-semibold">Нэмэлт мэдээлэл</p>
+                            <input
+                                name="title"
+                                placeholder="Гол онцлог"
+                                className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
+                                type="text"
+                                value={formData.title}
+                                onChange={handleChange}
+                            />
                         </div>
                     </div>
+
+                    <div className="w-full rounded-xl bg-white flex flex-col gap-4 py-8">
+                        <p className="px-8 font-semibold text-xl">Бүтээгдэхүүний зураг</p>
+                        <div className="w-full rounded-xl bg-white px-8 flex gap-4  justify-between">
+                            <div className="h-[200px] flex items-center gap-2">
+                                {formData.image.length === 0 ? (
+                                    <CiImageOn size={128} /> // Show icon when no images are uploaded
+                                ) : (
+                                    formData.image.map((url, index) => (
+                                        <div
+                                            key={index}
+                                            className="relative w-[200px] h-[200px]"
+                                            onMouseEnter={() => setHoveredIndex(index)}
+                                            onMouseLeave={() => setHoveredIndex(null)}
+                                        >
+                                            <Image
+                                                src={url}
+                                                alt={`Uploaded file ${index + 1}`}
+                                                fill
+                                                className="object-cover rounded-2xl"
+                                            />
+                                            {hoveredIndex === index && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleDeleteImage(index)}
+                                                    className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-full transition-opacity duration-200"
+                                                    aria-label="Delete image"
+                                                >
+                                                    <MdDelete size={20} />
+                                                </button>
+                                            )}
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                            <div>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                    className="hidden"
+                                    id="file-upload"
+                                    multiple // Allow multiple file uploads
+                                />
+                                <label htmlFor="file-upload" className="cursor-pointer flex justify-center items-center h-full w-full">
+                                    {isUploading ? (
+                                        <span>Uploading...</span> // Show uploading text when uploading
+                                    ) : (
+                                        "Upload"
+                                    )}
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <div className="w-full h-fit my-8 border-black rounded-xl bg-white flex gap-6 p-8 py-10">
-                        <div className="flex flex-col gap-4 w-full"><p className="font-semibold">Үндсэн үнэ</p><input
-                            name="price"
-                            placeholder="Үндсэн үнэ"
-                            className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
-                            type="text"
-                            value={formData.price}
-                            onChange={handleChange}
-                        /></div>
-                        <div className="flex flex-col gap-4 w-full"><p className="font-semibold">Үлдэгдэл тоо ширхэг</p><input
-                            name="qty"
-                            placeholder="Үлдэгдэл тоо ширхэг"
-                            className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
-                            type="text"
-                            value={formData.qty}
-                            onChange={handleChange}
-                        /></div>
+                        <div className="flex flex-col gap-4 w-full">
+                            <p className="font-semibold">Үндсэн үнэ</p>
+                            <input
+                                name="price"
+                                placeholder="Үндсэн үнэ"
+                                className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
+                                type="text"
+                                value={formData.price}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-4 w-full">
+                            <p className="font-semibold">Үлдэгдэл тоо ширхэг</p>
+                            <input
+                                name="qty"
+                                placeholder="Үлдэгдэл тоо ширхэг"
+                                className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
+                                type="text"
+                                value={formData.qty}
+                                onChange={handleChange}
+                            />
+
+
+                        </div>
 
                     </div>
                 </div>
@@ -160,15 +274,11 @@ export default function Add() {
                                 </DropdownMenuGroup>
                             </DropdownMenuContent>
                         </DropdownMenu>
-
-
                     </div>
                     <div className="w-full border-black rounded-xl bg-white p-8 flex flex-col">
                         <p className="text-xl font-semibold">Хэмжээ</p>
                         <div className="space-y-6 py-8">
-
                             <div className="flex gap-8 items-center">
-
                                 <Select onValueChange={handleSizeSelect}>
                                     <SelectTrigger className="w-[72px]">
                                         <SelectValue placeholder={selectedSize || <FaPlusCircle size={24} />} />
@@ -183,21 +293,17 @@ export default function Add() {
                                     </SelectContent>
                                 </Select>
                             </div>
-
                         </div>
-
                     </div>
                     <div className="flex justify-start items-center py-8">
                         <button type="submit" className="h-fit w-fit border-2 bg-black text-white p-4 rounded-xl">
                             Бүтээгдэхүүн нэмэх
                         </button>
                     </div>
-
                 </div>
             </div>
 
-        </form>
-
-
-    )
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+        </form >
+    );
 }

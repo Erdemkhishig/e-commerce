@@ -2,6 +2,8 @@
 import Image from 'next/image'
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
+import React, { createContext, useContext, useState } from 'react';
+import { useProduct } from '@/contexts/Productcontext';
 
 
 const images = [
@@ -118,7 +120,19 @@ const images = [
 ];
 
 
+
+
 export const Main = () => {
+
+    // const { getProducts, products, error } = useProduct();
+
+    // React.useEffect(() => {
+    //     getProducts();
+    // }, []);
+
+    // if (error) {
+    //     return <div>Error: {error}</div>;
+    // }
 
 
     return (
@@ -138,35 +152,35 @@ export const Main = () => {
                     </div>
                 </div>
             </Link>
-    
-                <div className="grid grid-cols-4 grid-rows-auto gap-4  py-8">
-                    {images.map((image, index) => (
-                         <Link  key={image.id} href={`/product/${image.id}`}
-                           
-                            className={`relative ${index === 2 || index === 3 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"}`}
-                        >
-                            <div>
-                                <div className="w-full h-full overflow-hidden rounded-xl">
-                                    <Image
-                                        src={image.img}
-                                        alt={`Image ${index}`}
-                                        width={index === 2 || index === 3 ? 800 : 400}
-                                        height={index === 2 || index === 3 ? 400 : 400}
-                                        className="object-cover duration-500 hover:scale-110"
-                                    />
-                                </div>
+
+            <div className="grid grid-cols-4 grid-rows-auto gap-4  py-8">
+                {images.map((image, index) => (
+                    <Link key={image.id} href={`/product/${image.id}`}
+
+                        className={`relative ${index === 2 || index === 3 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"}`}
+                    >
+                        <div>
+                            <div className="w-full h-full overflow-hidden rounded-xl">
+                                <Image
+                                    src={image.img}
+                                    alt={`Image ${index}`}
+                                    width={index === 2 || index === 3 ? 800 : 400}
+                                    height={index === 2 || index === 3 ? 400 : 400}
+                                    className="object-cover duration-500 hover:scale-110"
+                                />
                             </div>
-                            <button className="absolute top-4 right-8">
-                                <FaRegHeart color="white" size={28} />
-                            </button>
-                            <div className="py-2">
-                                <p className="text-sm font-medium">{image.title}</p>
-                                <p className="font-bold">{image.price}</p>
-                            </div>
-                       </Link>
-                    ))}
-                </div>
-         
+                        </div>
+                        <button className="absolute top-4 right-8">
+                            <FaRegHeart color="white" size={28} />
+                        </button>
+                        <div className="py-2">
+                            <p className="text-sm font-medium">{image.title}</p>
+                            <p className="font-bold">{image.price}</p>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+
         </div>
 
     )

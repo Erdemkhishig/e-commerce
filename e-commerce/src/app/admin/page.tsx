@@ -101,18 +101,20 @@ export default function Dashboard() {
                                 <p>0</p>
                             </div>
                             <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-                                <BarChart accessibilityLayer data={chartData}>
-                                    <Bar className="w-10" dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                                <div>
+                                    <BarChart accessibilityLayer data={chartData}>
+                                        <Bar className="w-10" dataKey="desktop" fill="var(--color-desktop)" radius={4} />
 
-                                </BarChart>
-                                <div className="flex gap-24 p-6">
-                                    <p>Jan</p>
-                                    <p>Feb</p>
-                                    <p>Mar</p>
-                                    <p>Apr</p>
-                                    <p>May</p>
-                                    <p>Jun</p>
-                                    <p>Jul</p>
+                                    </BarChart>
+                                    <div className="flex gap-24 p-6">
+                                        <p>Jan</p>
+                                        <p>Feb</p>
+                                        <p>Mar</p>
+                                        <p>Apr</p>
+                                        <p>May</p>
+                                        <p>Jun</p>
+                                        <p>Jul</p>
+                                    </div>
                                 </div>
 
                             </ChartContainer>

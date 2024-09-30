@@ -1,7 +1,6 @@
 "use client";
 import { MdDelete } from "react-icons/md";
 import { IoIosArrowBack } from "react-icons/io";
-import { FaPlusCircle } from "react-icons/fa";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -13,15 +12,6 @@ import * as React from "react";
 import { CiImageOn } from "react-icons/ci";
 import { Button } from "@/components/ui/button";
 import { FaAngleDown } from "react-icons/fa";
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
 import { useProduct } from '@/contexts/Productcontext';
 import { useFileUpload } from '@/contexts/Uploadcontext';
 import { useState } from "react";
@@ -31,31 +21,30 @@ interface FormData {
     name: string;
     title: string;
     price: string;
-    image: string[]; // Change this to string[]
+    image: string[];
     category: string;
-    qty: string;
-    size: string;
+    qty: { [key: string]: number };
+    size: string[];
     rating: string;
 }
 
 export default function Add() {
     const { createProduct } = useProduct();
-    const { uploadFile, uploadUrl, error } = useFileUpload();
+    const { uploadFile, error } = useFileUpload();
 
     const [formData, setFormData] = useState<FormData>({
         name: '',
         title: '',
         price: '',
-        image: [], // Ensure this is an array of strings
+        image: [],
         category: '',
-        qty: '',
-        size: '',
+        qty: { S: 0, M: 0, L: 0, XL: 0, Free: 0 },
+        size: [],
         rating: '',
     });
-    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [isUploading, setIsUploading] = useState<boolean>(false);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
-    const [selectedSize, setSelectedSize] = useState<string>('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -68,33 +57,26 @@ export default function Add() {
     const handleDeleteImage = (index: number) => {
         setFormData((prevData) => ({
             ...prevData,
-            image: prevData.image.filter((_, i) => i !== index), // Remove the image at the specified index
+            image: prevData.image.filter((_, i) => i !== index),
         }));
     };
-
-    const handleUpload = async (file: File) => {
-        setIsUploading(true);
-        await uploadFile(file);
-        setIsUploading(false);
-    };
-
-    const [imageFiles, setImageFiles] = useState<File[]>([]);
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
         if (files) {
             const uploadedImages: string[] = [];
 
-            // Check if the current number of images is less than 4
             if (formData.image.length >= 4) {
                 alert("You can only upload up to 4 images.");
                 return;
             }
 
+            setIsUploading(true);
+
             for (const file of Array.from(files)) {
                 if (uploadedImages.length + formData.image.length >= 4) {
                     alert("You can only upload up to 4 images.");
-                    break; // Stop adding more files if limit is reached
+                    break;
                 }
 
                 try {
@@ -105,21 +87,39 @@ export default function Add() {
                 }
             }
 
-            // Combine existing images with newly uploaded images
-            const newImages = [...formData.image, ...uploadedImages].slice(0, 4); // Ensure we don't exceed 4
+            const newImages = [...formData.image, ...uploadedImages].slice(0, 4);
             setFormData((prevData) => ({
                 ...prevData,
-                image: newImages
+                image: newImages,
             }));
+
+            setIsUploading(false);
         }
     };
 
+    const calculateTotalQuantity = (): number => {
+        return Object.values(formData.qty).reduce((sum, qty) => sum + qty, 0);
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        await createProduct(formData);
+        const productData = {
+            ...formData,
+            qty: Object.entries(formData.qty)
+                .filter(([, value]) => value > 0)
+                .reduce((acc, [size, value]) => ({ ...acc, [size]: value }), {}),
+        };
+
+        try {
+            await createProduct(productData);
+            alert("Product added successfully.");
+            window.location.reload();
+        } catch (err) {
+            console.error("Failed to create product:", err);
+        }
     };
+
 
     const handleCategorySelect = (category: string) => {
         setSelectedCategory(category);
@@ -130,12 +130,24 @@ export default function Add() {
     };
 
     const handleSizeSelect = (size: string) => {
-        setSelectedSize(size);
-        setFormData((prevData) => ({
-            ...prevData,
-            size: size,
-        }));
+        setFormData((prevData) => {
+            const newSizes = prevData.size.includes(size)
+                ? prevData.size.filter((s) => s !== size)
+                : [...prevData.size, size];
+
+            const newQty = { ...prevData.qty };
+            // Set quantity for the size to 0 or update as necessary
+            if (prevData.size.includes(size)) {
+                delete newQty[size]; // Remove size from qty if unchecked
+            } else {
+                newQty[size] = 0; // Initialize quantity for new size
+            }
+
+            return { ...prevData, size: newSizes, qty: newQty };
+        });
     };
+
+
 
     return (
         <form onSubmit={handleSubmit}>
@@ -212,11 +224,11 @@ export default function Add() {
                                     onChange={handleFileChange}
                                     className="hidden"
                                     id="file-upload"
-                                    multiple // Allow multiple file uploads
+                                    multiple
                                 />
                                 <label htmlFor="file-upload" className="cursor-pointer flex justify-center items-center h-full w-full">
                                     {isUploading ? (
-                                        <span>Uploading...</span> // Show uploading text when uploading
+                                        <span>Uploading...</span>
                                     ) : (
                                         "Upload"
                                     )}
@@ -241,15 +253,13 @@ export default function Add() {
                         <div className="flex flex-col gap-4 w-full">
                             <p className="font-semibold">Үлдэгдэл тоо ширхэг</p>
                             <input
-                                name="qty"
+                                name="totalQty"
                                 placeholder="Үлдэгдэл тоо ширхэг"
                                 className="bg-gray-100 border-2 w-full h-10 rounded-xl px-4"
                                 type="text"
-                                value={formData.qty}
-                                onChange={handleChange}
+                                value={calculateTotalQuantity()} // Use calculated total
+                                readOnly // Make read-only
                             />
-
-
                         </div>
 
                     </div>
@@ -278,23 +288,37 @@ export default function Add() {
                     <div className="w-full border-black rounded-xl bg-white p-8 flex flex-col">
                         <p className="text-xl font-semibold">Хэмжээ</p>
                         <div className="space-y-6 py-8">
-                            <div className="flex gap-8 items-center">
-                                <Select onValueChange={handleSizeSelect}>
-                                    <SelectTrigger className="w-[72px]">
-                                        <SelectValue placeholder={selectedSize || <FaPlusCircle size={24} />} />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            <SelectLabel>Хэмжээ</SelectLabel>
-                                            {['S', 'M', 'L', 'XL', 'Free'].map((size) => (
-                                                <SelectItem key={size} value={size}>{size}</SelectItem>
-                                            ))}
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </div>
+                            {['S', 'M', 'L', 'XL', 'Free'].map((size) => (
+                                <div key={size} className="flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        id={size}
+                                        checked={formData.size.includes(size)}
+                                        onChange={() => handleSizeSelect(size)}
+                                        className="mr-2"
+                                    />
+                                    <label htmlFor={size}>{size}</label>
+                                    {formData.size.includes(size) && (
+                                        <input
+                                            type="number"
+                                            min="0"
+                                            value={formData.qty[size] || 0} // Get the quantity for the size
+                                            onChange={(e) => {
+                                                const value = Math.max(0, parseInt(e.target.value, 10)); // Ensure non-negative
+                                                setFormData((prevData) => ({
+                                                    ...prevData,
+                                                    qty: { ...prevData.qty, [size]: value }, // Update the specific size quantity
+                                                }));
+                                            }}
+                                            className="ml-2 w-16 border border-gray-300 rounded px-2"
+                                        />
+                                    )}
+                                </div>
+                            ))}
                         </div>
+
                     </div>
+
                     <div className="flex justify-start items-center py-8">
                         <button type="submit" className="h-fit w-fit border-2 bg-black text-white p-4 rounded-xl">
                             Бүтээгдэхүүн нэмэх

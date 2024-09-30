@@ -23,11 +23,33 @@ const productSchema = new Schema({
         required: false,
     },
     qty: {
+        S: {
+            type: Number,
+            default: 0,
+        },
+        M: {
+            type: Number,
+            default: 0,
+        },
+        L: {
+            type: Number,
+            default: 0,
+        },
+        XL: {
+            type: Number,
+            default: 0,
+        },
+        Free: {
+            type: Number,
+            default: 0,
+        },
+    },
+    totalQty: {
         type: Number,
-        required: false,
+        default: 0, // Total quantity
     },
     size: {
-        type: String,
+        type: [String],
         required: false,
     },
     rating: {
@@ -47,3 +69,4 @@ const productSchema = new Schema({
 });
 
 export const productModel = model("Product", productSchema);
+

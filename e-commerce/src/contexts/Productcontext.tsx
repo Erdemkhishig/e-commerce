@@ -1,49 +1,76 @@
-"use client"
-import React, { createContext, useContext, useState } from 'react';
+"use client";
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { api } from "@/lib/axios";
 
+interface Product {
+    _id: string;
+    name: string;
+    title: string;
+    price: number;
+    image: string[];
+    category: string;
+    qty: Record<string, number>;
+    totalQty: number;
+    size: string;
+    rating: number;
+}
+
 interface ProductContextType {
-    createProduct: (productData: any) => Promise<void>;
-    getProducts: () => Promise<void>;
-    products: any[]; // You might want to define a more specific type for products
+    products: Product[];
+    loading: boolean;
     error: string | null;
+    createProduct: (productData: any) => Promise<void>;
+    getAllProducts: () => Promise<void>;
+
 }
 
 const ProductContext = createContext<ProductContextType>({} as ProductContextType);
 
 export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [products, setProducts] = useState<any[]>([]);
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+
 
     const createProduct = async (productData: any) => {
         try {
             const response = await api.post('/product', productData);
             console.log('Product created:', response.data.newProduct);
-            // Optionally refetch products after creating a new one
-            await getProducts();
+            // Optionally fetch all products again to update the list
+            await getAllProducts();
         } catch (err: any) {
             setError(err.response?.data?.message || 'Failed to create product');
             console.error(err);
         }
     };
 
-    const getProducts = async () => {
+    const getAllProducts = async () => {
+        setLoading(true);
+        setError(null);
+
         try {
-            const response = await api.get('/product');
-            setProducts(response.data.product);
+            const response = await api.get('/product'); // Adjust the endpoint if needed
+            setProducts(response.data.products);
         } catch (err: any) {
             setError(err.response?.data?.message || 'Failed to fetch products');
             console.error(err);
+        } finally {
+            setLoading(false);
         }
     };
 
+
+
+    useEffect(() => {
+        getAllProducts();
+    }, []);
+
     return (
-        <ProductContext.Provider value={{ createProduct, getProducts, products, error }}>
+        <ProductContext.Provider value={{ products, loading, error, createProduct, getAllProducts }}>
             {children}
         </ProductContext.Provider>
     );
 };
-
 export const useProduct = () => {
     const context = useContext(ProductContext);
     if (context === undefined) {

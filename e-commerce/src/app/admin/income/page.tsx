@@ -1,52 +1,27 @@
 "use client"
-import React, { useState } from 'react';
-import { useFileUpload } from '@/contexts/Uploadcontext';
-import Image from 'next/image';
+import React, { useEffect } from 'react';
+import { useProduct } from '@/contexts/Productcontext';
 
-const FileUpload: React.FC = () => {
-    const [file, setFile] = useState<File | null>(null);
-    const [isUploading, setIsUploading] = useState(false);
-    const { uploadFile, uploadUrl, error } = useFileUpload();
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const files = event.target.files;
-        if (files && files.length > 0) {
-            setFile(files[0]);
-        }
-    };
-
-    const handleUpload = async () => {
-        if (!file) {
-            alert("Please select a file first.");
-            return;
-        }
-
-        setIsUploading(true); // Set uploading state to true
-        await uploadFile(file);
-        setIsUploading(false); // Reset uploading state after upload
-    };
+const ProductList: React.FC = () => {
+    const { products, loading, error, getAllProducts } = useProduct();
 
     return (
-        <div>
-            <input type="file" onChange={handleFileChange} />
-            <button onClick={handleUpload} disabled={isUploading}>
-                {isUploading ? 'Uploading...' : 'Upload'}
-            </button>
-            {uploadUrl && (
-                <div>
-                    <p>File uploaded successfully!</p>
-                    <Image
-                        src={uploadUrl}
-                        alt="Uploaded file"
-                        width={500}
-                        height={400}
-                        style={{ maxWidth: '100%', height: 'auto' }}
-                    />
+        <div className='flex'>
+            {products.map((product) => (
+                <div key={product._id}>
+                    <h2>{product.title}</h2>
+                    <p>{product.price}</p>
+                    <img src={product.image[0]} alt={product.name} />
+                    {/* {product.image.map((item: string) => {
+                        return (
+                            <Image src={item} width={100} height={100} alt='image' />
+                        )
+                    })} */}
                 </div>
-            )}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            ))}
         </div>
     );
 };
 
-export default FileUpload;
+export default ProductList;

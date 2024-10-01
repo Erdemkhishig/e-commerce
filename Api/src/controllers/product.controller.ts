@@ -42,12 +42,14 @@ export const createProductController: RequestHandler = async (req, res) => {
 
 export const getProductController: RequestHandler = async (req, res) => {
     try {
-        const product = await productModel.find({})
+        const products = await productModel.find({});
 
         return res.status(200).json({
-            product,
+            count: products.length,
+            products,
         });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({
             message: "Internal server error",
         });

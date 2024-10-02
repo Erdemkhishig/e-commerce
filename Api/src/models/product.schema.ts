@@ -46,7 +46,7 @@ const productSchema = new Schema({
     },
     totalQty: {
         type: Number,
-        default: 0, // Total quantity
+        default: 0,
     },
     size: {
         type: [String],

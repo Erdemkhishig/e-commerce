@@ -13,6 +13,7 @@ interface User {
     id: string;
     name: string;
     email: string;
+    role: string;
 }
 
 interface AuthContextType {
@@ -47,7 +48,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 localStorage.setItem("token", res.data.token);
                 setUser(res.data.user);
                 toast.success("Login successful");
-                router.push(redirectAfterLogin || "/");
+
+                // Check user role and redirect accordingly
+                if (res.data.user.role === "admin") {
+                    router.push("/admin"); // Redirect to admin page
+                } else {
+                    router.push(redirectAfterLogin || "/"); // Redirect to default or specified page
+                }
             } else {
                 throw new Error("Login failed. No token received.");
             }
@@ -64,6 +71,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             console.error("Login Error:", err);
         }
     };
+
 
 
 

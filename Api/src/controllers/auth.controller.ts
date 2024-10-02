@@ -7,7 +7,7 @@ dotenv.config()
 
 
 export const register: RequestHandler = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     try {
         const existingUser = await userModel.findOne({ email });
@@ -15,7 +15,7 @@ export const register: RequestHandler = async (req, res) => {
             return res.status(400).json({ message: "User already exists" });
         }
 
-        const newUser = new userModel({ name, email, password });
+        const newUser = new userModel({ name, email, password, role });
         await newUser.save();
 
         res.status(201).json({

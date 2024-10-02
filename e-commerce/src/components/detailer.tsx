@@ -33,7 +33,7 @@ export const Detailer = () => {
 
     return (
 
-        <div className="w-[10%] flex flex-col justify-center items-center gap-4">
+        <div className="w-[10%] flex flex-col justify-between py-2 items-center gap-4">
             {product?.image.map((item, id) => (
                 <div key={id}>
                     <Image
@@ -55,3 +55,4 @@ export const Detailer = () => {
 
     )
 }
+

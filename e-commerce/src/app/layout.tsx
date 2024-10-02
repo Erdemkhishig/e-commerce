@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import 'react-toastify/dist/ReactToastify.css';
-import { ProductProvider } from "@/contexts/Productcontext"
+import { ProductProvider } from "@/contexts/Productcontext";
+
 
 
 export const metadata: Metadata = {
@@ -18,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
 
       <body >
+
         <ProductProvider>
           {children}
         </ProductProvider>
+
       </body>
 
     </html>

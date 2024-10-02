@@ -2,11 +2,10 @@ import { RequestHandler } from "express";
 import { categoryModel } from "../models";
 
 export const createCategoryController: RequestHandler = async (req, res) => {
-    const { name, productId } = req.body;
+    const { name } = req.body;
     try {
         const newCategory = await new categoryModel({
             name,
-            productId,
             createdAt: new Date(),
             updatedAt: new Date(),
         });

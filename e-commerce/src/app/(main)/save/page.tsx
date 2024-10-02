@@ -7,18 +7,7 @@ const images = [
         img: "/image0.png",
         title: "Wildflower Hoodie",
         price: "120'000₮"
-    },
-    {
-        img: "/image (1).png",
-        title: "All Smiles Nalgene",
-        price: "120'000₮"
-    },
-    {
-        img: "/image (2).png",
-        title: "Chunky Glyph Tee",
-        price: "120'000₮"
-    },
-
+    }
 
 ]
 

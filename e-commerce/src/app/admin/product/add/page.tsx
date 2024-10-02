@@ -14,15 +14,20 @@ import { Button } from "@/components/ui/button";
 import { FaAngleDown } from "react-icons/fa";
 import { useProduct } from '@/contexts/Productcontext';
 import { useFileUpload } from '@/contexts/Uploadcontext';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from 'next/image';
+
+interface Category {
+    _id: string;
+    name: string;
+}
 
 interface FormData {
     name: string;
     title: string;
     price: string;
     image: string[];
-    category: string;
+    category: string[];
     qty: { [key: string]: number };
     size: string[];
     rating: string;
@@ -37,7 +42,7 @@ export default function Add() {
         title: '',
         price: '',
         image: [],
-        category: '',
+        category: [],
         qty: { S: 0, M: 0, L: 0, XL: 0, Free: 0 },
         size: [],
         rating: '',
@@ -121,13 +126,14 @@ export default function Add() {
     };
 
 
-    const handleCategorySelect = (category: string) => {
-        setSelectedCategory(category);
+    const handleCategorySelect = (category: Category) => {
+        setSelectedCategory(category.name); // Assuming category is of type Category and has a name property
         setFormData((prevData) => ({
             ...prevData,
-            category: category,
+            category: [category._id], // Store the category ID in the formData
         }));
     };
+
 
     const handleSizeSelect = (size: string) => {
         setFormData((prevData) => {
@@ -146,6 +152,24 @@ export default function Add() {
             return { ...prevData, size: newSizes, qty: newQty };
         });
     };
+    const [categories, setCategories] = useState<Category[]>([]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/category'); // Adjust the endpoint as necessary
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setCategories(data.category);
+            } catch (error) {
+                (error instanceof Error ? error.message : 'An unknown error occurred');
+            }
+        };
+
+        fetchCategories();
+    }, []);
 
 
 
@@ -276,9 +300,9 @@ export default function Add() {
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56">
                                 <DropdownMenuGroup>
-                                    {['Малгай', 'T-shirt', 'Hoodie', 'Цүнх', 'Гутал', 'Усны сав', 'Өмд'].map((category) => (
-                                        <DropdownMenuItem key={category} onClick={() => handleCategorySelect(category)}>
-                                            <span>{category}</span>
+                                    {categories.map((category) => (
+                                        <DropdownMenuItem key={category._id} onClick={() => handleCategorySelect(category)}>
+                                            <span>{category.name}</span>
                                         </DropdownMenuItem>
                                     ))}
                                 </DropdownMenuGroup>

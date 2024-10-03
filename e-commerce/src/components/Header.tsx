@@ -42,8 +42,6 @@ export const Header = () => {
 
     const { user, logout } = useAuth()
 
-    console.log(user)
-
     return (
         <div className="w-full h-[68px] bg-black ">
             <div className="m-auto flex items-center justify-between h-full px-48">

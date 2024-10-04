@@ -46,7 +46,7 @@ export default function Product() {
                             <button className="py-2 absolute top-4 right-8"><FaRegHeart color="white" size={28} /></button>
                             <div className="flex gap-2 flex-col  py-2">
                                 <p>{image.name}</p>
-                                <p className="font-bold">{image.price}</p>
+                                <p className="font-bold">{image.price}₮</p>
                             </div>
                         </Link>
                     ))}

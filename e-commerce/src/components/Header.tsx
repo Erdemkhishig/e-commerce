@@ -7,13 +7,17 @@ import Image from 'next/image'
 import { useAuth } from "@/components/provider/Auth.provider";
 import { FaPowerOff } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
-
+import { useLikedProducts } from '@/contexts/Likedcontext';
+import { useProduct } from '@/contexts/Productcontext';
 import { Button } from "@/components/ui/button"
+import { useCartProducts } from "@/contexts/Cartcontext";
 import {
     Dialog,
     DialogContent,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 import Link from "next/link";
 
@@ -39,6 +43,15 @@ const images = [
 
 
 export const Header = () => {
+    const { likedProducts, setLikedProducts } = useLikedProducts();
+    const { products } = useProduct();
+    const savedProducts = React.useMemo(
+        () => products.filter(product => Array.isArray(likedProducts) && likedProducts.includes(product._id)),
+        [products, likedProducts]
+    );
+    const { cartProducts, setCartProducts } = useCartProducts(); // Ensure setCartProducts is available
+
+    const chosenProducts = products.filter(product => Array.isArray(cartProducts) && cartProducts.includes(product._id));
 
     const { user, logout } = useAuth()
 
@@ -59,9 +72,13 @@ export const Header = () => {
 
                     <Link href="/category"> <p className="text-white px-8" >Ангилал</p> </Link>
 
-                    <div className="text-white flex items-center gap-2 border-2 rounded-xl px-2 border-white">
-                        <FaUser color="white" /> <p> = {user ? user.name : ""}</p>
-                    </div>
+                    <Link href="/user" className="text-white flex items-center gap-2 rounded-xl px-2">
+                        <Avatar>
+                            <AvatarImage src="https://github.com/shadcn.png" />
+                            <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                        <p> = {user ? user.name : ""}</p>
+                    </Link>
 
 
                     <button onClick={logout}>
@@ -114,11 +131,11 @@ export const Header = () => {
                 </Dialog>
 
 
-                <div className="flex gap-4 items-center">
-                    <Link href="/save"><div><FaRegHeart color="white" size={20} />
-                    </div></Link>
-                    <Link href="/cart"><div><MdOutlineShoppingCart color="white" size={20} />
-                    </div></Link>
+                <div className="flex gap-6 items-center">
+                    <Link href="/save"><div className='relative'><FaRegHeart color="white" size={30} />
+                    </div> <div className=' absolute rounded-full bg-blue-700 text-white px-2 top-2 right-[29.8rem]'>{savedProducts.length}</div></Link>
+                    <Link href="/cart"><div className='relative'><MdOutlineShoppingCart color="white" size={34} />
+                    </div><div className=' absolute rounded-full bg-blue-700 text-white px-2 top-2 right-[26.6rem]'>{chosenProducts.length}</div></Link>
                     <Link href="/register"><Button className="border-blue-700  rounded-2xl border-2 hover:bg-blue-700">Бүртгүүлэх</Button></Link>
                     <Link href="/login"><Button className="border-blue-700  rounded-2xl border-2 hover:bg-blue-700">Нэвтрэх</Button></Link>
                 </div>

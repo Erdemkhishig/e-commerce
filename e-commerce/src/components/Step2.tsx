@@ -1,3 +1,21 @@
+"use client";
+import { useProduct } from '@/contexts/Productcontext';
+import { useCartProducts } from "@/contexts/Cartcontext";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import Link from "next/link";
+
+interface Product {
+    _id: string;
+    name: string;
+    title: string;
+    price: number | string;
+    image: string[];
+    category: string[];
+    qty: Record<string, number>;
+    totalQty: number;
+    size: string[];
+    rating: number;
+}
 import * as React from "react"
 import { Input } from "@/components/ui/input"
 import Image from 'next/image'
@@ -6,27 +24,22 @@ import Image from 'next/image'
 import { Textarea } from "@/components/ui/textarea"
 
 
-const images = [
-    {
-        img: "/image0.png",
-        title: "Wildflower Hoodie",
-        price: "120'000₮"
-    },
-    {
-        img: "/image (1).png",
-        title: "All Smiles Nalgene",
-        price: "120'000₮"
-    },
-    {
-        img: "/image (2).png",
-        title: "Chunky Glyph Tee",
-        price: "120'000₮"
-    },
-
-
-]
-
 export const Step2 = () => {
+
+    const { products } = useProduct();
+    const { cartProducts, setCartProducts } = useCartProducts(); // Ensure setCartProducts is available
+
+    const chosenProducts = products.filter(product => Array.isArray(cartProducts) && cartProducts.includes(product._id));
+
+    const totalPrice = chosenProducts.reduce((total, product) => {
+        const price = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+        return total + price;
+    }, 0);
+
+    const handleDelete = (productId: string) => {
+        setCartProducts(prev => prev.filter(id => id !== productId));
+    };
+
     return (
         <div className="w-full flex flex-col items-center gap-8 my-8">
             <div>
@@ -50,45 +63,38 @@ export const Step2 = () => {
 
             </div>
             <div className="w-full flex gap-8">
-                <div className="w-[35%] h-full flex justify-start items-start flex-col rounded-2xl bg-white">
+                <div className="w-1/2 flex flex-col items-center">
 
-                    <p className="py-8 px-12 text-xl font-black">1.Сагс (3)</p>
-                    <div className='flex gap-4 flex-col w-full h-1/2 px-12 pb-8'>
-                        {images.map((image, index) => (
-                            <div className='flex w-full border-2 border-gray-100 p-4 rounded-2xl bg-white h-[120px]' key={index}>
+                    <div className='flex gap-4 flex-col w-full px-8 border-2 border-gray-100 p-4 rounded-2xl bg-white'>
+                        <p className="py-8 px-12 text-2xl font-black">1. Сагс ({chosenProducts.length})</p>
+                        {chosenProducts.map(product => (
+                            <div key={product._id} className='flex w-full gap-16'>
                                 <div className='overflow-hidden rounded-2xl'>
                                     <Image
-                                        className='w-36 h-48'
-                                        src={image.img}
-                                        width={120}
-                                        height={130}
-                                        alt={`Image ${index}`}
+                                        className='w-48 h-48'
+                                        src={product.image[0]}
+                                        width={200}
+                                        height={200}
+                                        alt={product.name}
                                     />
                                 </div>
 
-                                <div className='flex gap-2 flex-col justify-center items-center px-2 w-full'>
-                                    <p className=" pl-4">{image.title}</p>
-                                    <div className="flex gap-2">
-                                        <p>1</p>
-                                        <p>x</p>
-                                        <p className='font-bold'>{image.price}</p>
-                                    </div>
-                                    <p className='font-bold'>{image.price}</p>
-
+                                <div className='flex gap-4 flex-col justify-center items-start px-2'>
+                                    <p>{product.name}</p>
+                                    <p>1 x {product.price}₮</p>
+                                    <p className='font-bold text-2xl'>{product.price}₮</p>
                                 </div>
-
                             </div>
-
-
                         ))}
-                        <div className='text-2xl flex justify-between p-4  bg-white py-8 border-t-2 border-dashed mt-8'>
-                            <p>Нийт төлөх дүн:</p>
-                            <p className="font-bold">360’000₮</p>
-
+                        <div className="px-12 flex flex-col p-4 rounded-2xl bg-white">
+                            <div className='flex justify-between font-bold'>
+                                <p>Нийт үнэ:</p>
+                                <p>{totalPrice}₮</p>
+                            </div>
                         </div>
-
-
                     </div>
+
+
                 </div>
                 <div className="w-[65%] text-lg pb-4 bg-white rounded-2xl p-8">
                     <p className="text-2xl font-bold  border-gray-300 h-16 mb-8">2.Хүргэлтийн мэдээлэл оруулах</p>

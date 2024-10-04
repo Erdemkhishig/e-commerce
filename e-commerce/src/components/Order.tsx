@@ -5,11 +5,6 @@
 import * as React from "react"
 import { PiCaretUpDownBold } from "react-icons/pi";
 import Image from 'next/image'
-
-
-
-
-
 import { Button } from "@/components/ui/button"
 import {
     Collapsible,
@@ -21,16 +16,6 @@ const images = [
     {
         img: "/image0.png",
         title: "Wildflower Hoodie",
-        price: "120'000₮"
-    },
-    {
-        img: "/image (1).png",
-        title: "All Smiles Nalgene",
-        price: "120'000₮"
-    },
-    {
-        img: "/image (2).png",
-        title: "Chunky Glyph Tee",
         price: "120'000₮"
     },
 

@@ -105,7 +105,7 @@ export const Detailer2: React.FC = () => {
                 {product?.size.map((item, id) => (
                     <div key={id}>
                         <button
-                            className={`text-md w-8 h-8 rounded-full border-2 border-black flex items-center justify-center 
+                            className={`text-md w-8 h-8 p-6 rounded-full border-2 border-black flex items-center justify-center 
                             ${selectedSize === item ? 'bg-black text-white' : 'hover:bg-black hover:text-white'}`}
                             onClick={() => setSelectedSize(item)}
                         >

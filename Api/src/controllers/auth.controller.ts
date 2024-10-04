@@ -65,3 +65,4 @@ export const login: RequestHandler = async (req, res) => {
         return res.status(500).json({ message: "Error logging in" });
     }
 };
+

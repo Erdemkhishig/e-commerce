@@ -20,7 +20,7 @@ export const Main = () => {
 
     return (
         <div className="max-w-screen-xl m-auto pb-24">
-            <Link href="/product/id">
+            <Link href="/product/66fa1f9b4791be9478267ec4">
                 <div className="relative">
                     <Image
                         className="rounded-2xl my-8"
@@ -59,7 +59,7 @@ export const Main = () => {
                             </button>
                             <div className="py-2">
                                 <p className="text-sm font-medium">{image.name}</p>
-                                <p className="font-bold">{image.price}</p>
+                                <p className="font-bold">{image.price}₮</p>
                             </div>
                         </Link>
                     )

@@ -40,7 +40,7 @@ export default function Save() {
             if (Array.isArray(prev)) {
                 return prev.includes(productId) ? prev : [...prev, productId];
             }
-            return [productId]; // Default case if not an array
+            return [productId];
         });
     };
 

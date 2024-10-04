@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import Image from 'next/image';
-import { useLikedProducts } from '@/contexts/Likedcontext';
 import { useProduct } from '@/contexts/Productcontext';
 import { useCartProducts } from "@/contexts/Cartcontext";
 import { RiDeleteBin6Line } from "react-icons/ri";

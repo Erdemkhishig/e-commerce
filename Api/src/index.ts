@@ -24,7 +24,7 @@ app.get("/", (_req, res) => {
     res.json({ message: "HelloWorld" });
 });
 
-app.use("/", userRouter);
+app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/category", categoryRouter);
 app.use("/review", reviewRouter);

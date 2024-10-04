@@ -9,6 +9,8 @@ interface CustomRequest extends Request {
 
 const authMiddleware = (req: CustomRequest, res: Response, next: NextFunction) => {
   if (req.path.startsWith('/auth')) return next();
+  if (req.path.startsWith('/product')) return next();
+  if (req.path.startsWith('/category')) return next();
 
   const auth = req.headers.authorization;
   const token = auth?.split(' ')[1];
@@ -17,9 +19,6 @@ const authMiddleware = (req: CustomRequest, res: Response, next: NextFunction) =
 
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET as string) as jwt.JwtPayload;
-    console.log(user, "user=====");
-
-    res.json(user)
     req.user = user;
     next();
   } catch (err) {
@@ -28,3 +27,5 @@ const authMiddleware = (req: CustomRequest, res: Response, next: NextFunction) =
 };
 
 export { authMiddleware };
+
+

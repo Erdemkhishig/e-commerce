@@ -1,23 +1,23 @@
 import * as React from "react"
 import { FaStar } from "react-icons/fa6";
 import { Textarea } from "@/components/ui/textarea"
-
+import { useAuth } from "@/components/provider/Auth.provider";
 
 
 export const Rate = () => {
-
-
+    const { user, logout } = useAuth()
     return (
-        <div className="flex flex-col items-start w-full rounded-2xl h-[200px]">
-            <div className=" flex flex-col gap-2 border-gray-500 border-b-2 border-dotted">
-                <div className="flex gap-2 p-1">
-                    <p>Saraa</p>
-                    <p><FaStar fill="yellow" size={24} /></p>
-                    <p><FaStar fill="yellow" size={24} /></p>
-                    <p><FaStar fill="yellow" size={24} /></p>
+        <div className="flex flex-col items-start w-[400px] rounded-2xl">
+
+            <div className="flex font-bold flex-col gap-4 bg-gray-200 rounded-2xl px-8 w-full py-4">
+                <div className=" flex flex-col gap-2 border-gray-500 border-b-2 border-dotted">
+                    <div className="flex gap-2 w-full py-2">
+                        <p>{user?.name}</p>
+                        <p><FaStar fill="yellow" size={24} /></p>
+                        <p><FaStar fill="yellow" size={24} /></p>
+                        <p><FaStar fill="yellow" size={24} /></p>
+                    </div>
                 </div>
-            </div>
-            <div className="flex font-bold flex-col gap-4 bg-gray-200 rounded-2xl p-1 w-full py-8">
                 <p>Одоор үнэлэх:</p>
                 <p><FaStar fill="yellow" size={24} /></p>
                 <p>Сэтгэгдэл үлдээх:</p>

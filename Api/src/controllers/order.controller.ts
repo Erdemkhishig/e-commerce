@@ -1,10 +1,10 @@
 import { RequestHandler } from "express";
-import { orderModel } from "../models/order.schema";
+import { Order } from "../models/order.schema";
 
 export const createOrderController: RequestHandler = async (req, res) => {
     const { userId, productId, paid, address } = req.body;
     try {
-        const newOrder = await new orderModel({
+        const newOrder = await new Order({
             userId,
             productId,
             paid,
@@ -26,7 +26,7 @@ export const createOrderController: RequestHandler = async (req, res) => {
 
 export const getOrderController: RequestHandler = async (req, res) => {
     try {
-        const order = await orderModel.find({})
+        const order = await Order.find({})
 
         return res.status(200).json({
             order,
@@ -42,7 +42,7 @@ export const getOrderByIdController: RequestHandler = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const order = await orderModel.findById(id);
+        const order = await Order.findById(id);
 
         if (!order) {
             return res.status(404).json({

@@ -21,7 +21,7 @@ export const register: RequestHandler = async (req, res) => {
         res.status(201).json({
             message: "User registered successfully",
             user: {
-                name: newUser.name,
+                name: newUser.FirstName,
                 email: newUser.email,
             }
         });
@@ -54,7 +54,7 @@ export const login: RequestHandler = async (req, res) => {
         }
 
         const token = jwt.sign(
-            { userId: user._id, email: user.email, name: user.name },
+            { userId: user._id, email: user.email, name: user.FirstName },
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
         );

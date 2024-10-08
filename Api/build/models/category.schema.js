@@ -11,10 +11,6 @@ const categorySchema = new Schema({
         type: String,
         required: true,
     },
-    productId: {
-        type: String,
-        required: false,
-    },
     createdAt: {
         type: Date,
         required: true,

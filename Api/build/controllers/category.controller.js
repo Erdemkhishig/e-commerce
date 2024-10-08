@@ -12,11 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCategoryByIdController = exports.getCategoryController = exports.createCategoryController = void 0;
 const models_1 = require("../models");
 const createCategoryController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, productId } = req.body;
+    const { name } = req.body;
     try {
         const newCategory = yield new models_1.categoryModel({
             name,
-            productId,
             createdAt: new Date(),
             updatedAt: new Date(),
         });

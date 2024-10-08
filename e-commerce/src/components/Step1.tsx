@@ -6,18 +6,6 @@ import { useCartProducts } from "@/contexts/Cartcontext";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Link from "next/link";
 
-interface Product {
-    _id: string;
-    name: string;
-    title: string;
-    price: number | string;
-    image: string[];
-    category: string[];
-    qty: Record<string, number>;
-    totalQty: number;
-    size: string[];
-    rating: number;
-}
 
 export const Step1 = () => {
     const { products } = useProduct();

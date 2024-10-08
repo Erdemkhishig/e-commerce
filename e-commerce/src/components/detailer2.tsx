@@ -30,7 +30,7 @@ export const Detailer2: React.FC = () => {
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
     const { likedProducts, setLikedProducts } = useLikedProducts();
-    const { cartProducts, setCartProducts } = useCartProducts();
+    const { setCartProducts } = useCartProducts();
 
     useEffect(() => {
         const getProductById = async () => {

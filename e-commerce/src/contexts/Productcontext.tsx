@@ -1,6 +1,7 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { api } from "@/lib/axios";
+import axios from 'axios';
 
 interface Product {
     _id: string;
@@ -15,31 +16,43 @@ interface Product {
     rating: number;
 }
 
+interface ProductData {
+    name: string;
+    price: number;
+}
+
+interface ApiError {
+    message: string;
+}
+
 interface ProductContextType {
     products: Product[];
     loading: boolean;
     error: string | null;
-    createProduct: (productData: any) => Promise<void>;
+    createProduct: (productData: ProductData) => Promise<void>;
     getAllProducts: () => Promise<void>;
-
 }
 
 const ProductContext = createContext<ProductContextType>({} as ProductContextType);
 
 export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<Product[]>([] as Product[]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
 
-    const createProduct = async (productData: any) => {
+    const createProduct = async (productData: ProductData) => {
         try {
             const response = await api.post('/product', productData);
             console.log('Product created:', response.data.newProduct);
-            // Optionally fetch all products again to update the list
             await getAllProducts();
-        } catch (err: any) {
-            setError(err.response?.data?.message || 'Failed to create product');
+        } catch (err: unknown) {
+            if (axios.isAxiosError(err)) {
+                const apiError: ApiError = err.response?.data;
+                setError(apiError.message || 'Failed to create product');
+            } else {
+                setError('Failed to create product');
+            }
             console.error(err);
         }
     };
@@ -49,17 +62,20 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setError(null);
 
         try {
-            const response = await api.get('/product'); // Adjust the endpoint if needed
+            const response = await api.get('/product');
             setProducts(response.data.products);
-        } catch (err: any) {
-            setError(err.response?.data?.message || 'Failed to fetch products');
+        } catch (err: unknown) {
+            if (axios.isAxiosError(err)) {
+                const apiError: ApiError = err.response?.data;
+                setError(apiError.message || 'Failed to fetch products');
+            } else {
+                setError('Failed to fetch products');
+            }
             console.error(err);
         } finally {
             setLoading(false);
         }
     };
-
-
 
     useEffect(() => {
         getAllProducts();

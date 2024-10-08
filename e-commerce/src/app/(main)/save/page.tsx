@@ -5,26 +5,12 @@ import { FaHeart } from "react-icons/fa";
 import { useLikedProducts } from '@/contexts/Likedcontext';
 import { useProduct } from '@/contexts/Productcontext';
 import { useCartProducts } from "@/contexts/Cartcontext";
-import { useParams } from "next/navigation";
 
-interface Product {
-    _id: string;
-    name: string;
-    title: string;
-    price: number;
-    image: string[];
-    category: string[];
-    qty: Record<string, number>;
-    totalQty: number;
-    size: string[];
-    rating: number;
-}
 
 export default function Save() {
-    const { id } = useParams();
     const { likedProducts, setLikedProducts } = useLikedProducts();
     const { products } = useProduct();
-    const { cartProducts, setCartProducts } = useCartProducts();
+    const { setCartProducts } = useCartProducts();
 
     const savedProducts = React.useMemo(
         () => products.filter(product => Array.isArray(likedProducts) && likedProducts.includes(product._id)),

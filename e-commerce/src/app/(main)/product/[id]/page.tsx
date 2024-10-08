@@ -3,13 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useProduct } from '@/contexts/Productcontext';
-import { Rate } from "@/components/Rate";
 import { Detailer } from "@/components/detailer";
 import { Detailer1 } from "@/components/detailer1";
-import { useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { Detailer2 } from "@/components/detailer2";
-
 
 export default function Product() {
 

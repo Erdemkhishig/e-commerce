@@ -6,7 +6,6 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import Image from 'next/image'
 import { useAuth } from "@/components/provider/Auth.provider";
 import { FaPowerOff } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa";
 import { useLikedProducts } from '@/contexts/Likedcontext';
 import { useProduct } from '@/contexts/Productcontext';
 import { Button } from "@/components/ui/button"
@@ -43,13 +42,13 @@ const images = [
 
 
 export const Header = () => {
-    const { likedProducts, setLikedProducts } = useLikedProducts();
+    const { likedProducts } = useLikedProducts();
     const { products } = useProduct();
     const savedProducts = React.useMemo(
         () => products.filter(product => Array.isArray(likedProducts) && likedProducts.includes(product._id)),
         [products, likedProducts]
     );
-    const { cartProducts, setCartProducts } = useCartProducts(); // Ensure setCartProducts is available
+    const { cartProducts } = useCartProducts();
 
     const chosenProducts = products.filter(product => Array.isArray(cartProducts) && cartProducts.includes(product._id));
 
@@ -77,7 +76,7 @@ export const Header = () => {
                             <AvatarImage src="https://github.com/shadcn.png" />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
-                        <p> = {user ? user.name : ""}</p>
+                        <p> = {user ? user.firstname : ""}</p>
                     </Link>
 
 

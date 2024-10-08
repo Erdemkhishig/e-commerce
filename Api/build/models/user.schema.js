@@ -17,7 +17,11 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const { Schema, model } = mongoose_1.default;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const userSchema = new Schema({
-    name: {
+    FirstName: {
+        type: String,
+        required: true,
+    },
+    LastName: {
         type: String,
         required: true,
     },

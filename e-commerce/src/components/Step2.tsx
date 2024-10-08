@@ -1,21 +1,6 @@
 "use client";
 import { useProduct } from '@/contexts/Productcontext';
 import { useCartProducts } from "@/contexts/Cartcontext";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import Link from "next/link";
-
-interface Product {
-    _id: string;
-    name: string;
-    title: string;
-    price: number | string;
-    image: string[];
-    category: string[];
-    qty: Record<string, number>;
-    totalQty: number;
-    size: string[];
-    rating: number;
-}
 import * as React from "react"
 import { Input } from "@/components/ui/input"
 import Image from 'next/image'
@@ -27,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea"
 export const Step2 = () => {
 
     const { products } = useProduct();
-    const { cartProducts, setCartProducts } = useCartProducts(); // Ensure setCartProducts is available
+    const { cartProducts } = useCartProducts(); // Ensure setCartProducts is available
 
     const chosenProducts = products.filter(product => Array.isArray(cartProducts) && cartProducts.includes(product._id));
 
@@ -35,10 +20,6 @@ export const Step2 = () => {
         const price = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
         return total + price;
     }, 0);
-
-    const handleDelete = (productId: string) => {
-        setCartProducts(prev => prev.filter(id => id !== productId));
-    };
 
     return (
         <div className="w-full flex flex-col items-center gap-8 my-8">

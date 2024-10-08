@@ -6,7 +6,8 @@ import { useAuth } from "@/components/provider/Auth.provider";
 
 export default function Register() {
     const [isPasswordFocused, setIsPasswordFocused] = useState(false);
-    const [name, setName] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -23,7 +24,7 @@ export default function Register() {
             return;
         }
         try {
-            await register(name, email, password);
+            await register(firstname, lastname, email, password);
         } catch (err: unknown) {
             if (err instanceof Error) {
                 setError(err.message || 'Registration failed. Please try again.');
@@ -40,9 +41,16 @@ export default function Register() {
                 <Input
                     className="bg-white rounded-2xl"
                     type="text"
+                    placeholder="Овог"
+                    value={firstname}
+                    onChange={(e) => setFirstname(e.target.value)}
+                />
+                <Input
+                    className="bg-white rounded-2xl"
+                    type="text"
                     placeholder="Нэр"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
                 />
                 <Input
                     className="bg-white rounded-2xl"

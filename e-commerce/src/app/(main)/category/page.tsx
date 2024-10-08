@@ -12,19 +12,6 @@ interface Category {
     name: string;
 }
 
-interface Product {
-    _id: string;
-    name: string;
-    title: string;
-    price: number;
-    image: string[];
-    category: string;
-    qty: Record<string, number>;
-    totalQty: number;
-    size: string;
-    rating: number;
-}
-
 export default function Category() {
 
 
@@ -64,7 +51,7 @@ export default function Category() {
                 < div className="flex flex-col items-start gap-2">
                     <p className="font-bold py-4">Ангилал  </p>
                     {categories.map(category => (
-                        <button><li key={category._id}>{category.name}</li></button>
+                        <button key={category._id}><li >{category.name}</li></button>
                     ))}
                 </ div>
                 < div className="flex flex-col items-start gap-2 ">

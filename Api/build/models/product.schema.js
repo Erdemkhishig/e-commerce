@@ -7,28 +7,54 @@ exports.productModel = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const { Schema, model } = mongoose_1.default;
 const productSchema = new Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
     },
     price: {
         type: String,
-        required: true,
+        required: false,
     },
     image: {
-        type: String,
+        type: [String],
         required: false,
     },
     category: {
-        type: String,
+        type: [String],
         required: false,
     },
-    color: {
-        type: String,
-        required: false,
+    qty: {
+        S: {
+            type: Number,
+            default: 0,
+        },
+        M: {
+            type: Number,
+            default: 0,
+        },
+        L: {
+            type: Number,
+            default: 0,
+        },
+        XL: {
+            type: Number,
+            default: 0,
+        },
+        Free: {
+            type: Number,
+            default: 0,
+        },
+    },
+    totalQty: {
+        type: Number,
+        default: 0,
     },
     size: {
-        type: String,
+        type: [String],
         required: false,
     },
     rating: {

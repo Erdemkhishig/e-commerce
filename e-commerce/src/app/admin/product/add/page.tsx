@@ -25,7 +25,7 @@ interface Category {
 interface FormData {
     name: string;
     title: string;
-    price: string;
+    price: number; // Change this to number
     image: string[];
     category: string[];
     qty: { [key: string]: number };
@@ -40,13 +40,14 @@ export default function Add() {
     const [formData, setFormData] = useState<FormData>({
         name: '',
         title: '',
-        price: '',
+        price: 0, // Initialize as a number
         image: [],
         category: [],
         qty: { S: 0, M: 0, L: 0, XL: 0, Free: 0 },
         size: [],
         rating: '',
     });
+
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [isUploading, setIsUploading] = useState<boolean>(false);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
@@ -55,7 +56,7 @@ export default function Add() {
         const { name, value } = e.target;
         setFormData((prevData) => ({
             ...prevData,
-            [name]: value,
+            [name]: name === 'price' ? parseFloat(value) : value, // Convert price to a number
         }));
     };
 
@@ -117,13 +118,14 @@ export default function Add() {
         };
 
         try {
-            await createProduct(productData);
+            await createProduct(productData); // Ensure this function expects price as a number
             alert("Product added successfully.");
             window.location.reload();
         } catch (err) {
             console.error("Failed to create product:", err);
         }
     };
+
 
 
     const handleCategorySelect = (category: Category) => {

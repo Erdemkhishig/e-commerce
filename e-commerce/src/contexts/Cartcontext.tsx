@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface CartProductsContextType {
@@ -11,16 +11,20 @@ const CartProductsContext = createContext<CartProductsContextType | undefined>(u
 export const useCartProducts = () => {
     const context = useContext(CartProductsContext);
     if (!context) {
-        throw new Error("error");
+        throw new Error("useCartProducts must be used within a CartProductsProvider");
     }
     return context;
 };
 
 export const CartProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [cartProducts, setCartProducts] = useState<string[]>(() => {
+    const [cartProducts, setCartProducts] = useState<string[]>([]);
+
+    useEffect(() => {
         const storedCartProducts = localStorage.getItem('cartProducts');
-        return storedCartProducts ? JSON.parse(storedCartProducts) : [];
-    });
+        if (storedCartProducts) {
+            setCartProducts(JSON.parse(storedCartProducts));
+        }
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('cartProducts', JSON.stringify(cartProducts));

@@ -28,8 +28,13 @@ export const Detailer1 = () => {
             try {
                 const response = await api.get(`/product/${id}`);
                 setProduct(response.data.product);
-            } catch (err: any) {
-                setError("Failed to load product");
+            } catch (err: unknown) {
+                // Improved error handling
+                if (err instanceof Error) {
+                    setError(err.message); // Use error message for more context
+                } else {
+                    setError("Failed to load product");
+                }
                 console.error(err);
             } finally {
                 setLoading(false);
@@ -57,7 +62,6 @@ export const Detailer1 = () => {
                         height={400}
                         alt={`item ${id}`}
                     />
-
                 </>
             )}
         </div>

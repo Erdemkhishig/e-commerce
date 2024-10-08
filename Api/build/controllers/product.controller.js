@@ -12,26 +12,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProductByIdController = exports.getProductController = exports.createProductController = void 0;
 const models_1 = require("../models");
 const createProductController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { title, price, image, category, color, size, rating } = req.body;
+    const { name, title, price, image, category, qty, size, rating } = req.body;
     try {
-        const newProduct = yield new models_1.productModel({
+        const totalQty = (qty.S || 0) + (qty.M || 0) + (qty.L || 0) + (qty.XL || 0) + (qty.Free || 0);
+        const newProduct = new models_1.productModel({
+            name,
             title,
             price,
             image,
             category,
-            color,
+            qty: {
+                S: qty.S || 0,
+                M: qty.M || 0,
+                L: qty.L || 0,
+                XL: qty.XL || 0,
+                Free: qty.Free || 0,
+            },
+            totalQty,
             size,
             rating,
             createdAt: new Date(),
             updatedAt: new Date(),
         });
-        newProduct.save();
+        yield newProduct.save();
         return res.status(201).json({
-            message: "product created successfully",
-            newProduct
+            message: "Product created successfully",
+            newProduct,
         });
     }
     catch (error) {
+        console.error(error);
         return res.status(500).json({
             message: "Internal server error",
         });
@@ -40,12 +50,14 @@ const createProductController = (req, res) => __awaiter(void 0, void 0, void 0, 
 exports.createProductController = createProductController;
 const getProductController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const product = yield models_1.productModel.find({});
+        const products = yield models_1.productModel.find({});
         return res.status(200).json({
-            product,
+            count: products.length,
+            products,
         });
     }
     catch (error) {
+        console.error(error);
         return res.status(500).json({
             message: "Internal server error",
         });

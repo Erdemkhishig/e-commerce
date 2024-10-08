@@ -11,7 +11,8 @@ import { AxiosError } from "axios";
 interface User {
 
     id: string;
-    name: string;
+    firstname: string;
+    lastname: string;
     email: string;
     role: string;
 }
@@ -19,7 +20,7 @@ interface User {
 interface AuthContextType {
     user: User | null;
     login: (email: string, password: string) => Promise<void>;
-    register: (name: string, email: string, password: string) => Promise<void>;
+    register: (firstname: string, lastname: string, email: string, password: string) => Promise<void>;
     logout: () => void;
 }
 
@@ -49,11 +50,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 setUser(res.data.user);
                 toast.success("Login successful");
 
-                // Check user role and redirect accordingly
                 if (res.data.user.role === "admin") {
-                    router.push("/admin"); // Redirect to admin page
+                    router.push("/admin");
                 } else {
-                    router.push(redirectAfterLogin || "/"); // Redirect to default or specified page
+                    router.push(redirectAfterLogin || "/");
                 }
             } else {
                 throw new Error("Login failed. No token received.");
@@ -76,9 +76,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
 
 
-    const register = async (name: string, email: string, password: string) => {
+    const register = async (firstname: string, lastname: string, email: string, password: string) => {
         try {
-            await api.post("/auth/register", { name, email, password });
+            await api.post("/auth/register", { firstname, lastname, email, password });
 
             setRedirectAfterLogin("/");
             router.push("/");

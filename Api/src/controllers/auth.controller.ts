@@ -7,7 +7,7 @@ dotenv.config()
 
 
 export const register: RequestHandler = async (req, res) => {
-    const { name, email, password, role } = req.body;
+    const { firstname, lastname, email, password, role } = req.body;
 
     try {
         const existingUser = await userModel.findOne({ email });
@@ -15,13 +15,14 @@ export const register: RequestHandler = async (req, res) => {
             return res.status(400).json({ message: "User already exists" });
         }
 
-        const newUser = new userModel({ name, email, password, role });
+        const newUser = new userModel({ firstname, lastname, email, password, role });
         await newUser.save();
 
         res.status(201).json({
             message: "User registered successfully",
             user: {
-                name: newUser.FirstName,
+                firstname: newUser.firstname,
+                lastname: newUser.lastname,
                 email: newUser.email,
             }
         });
@@ -54,7 +55,7 @@ export const login: RequestHandler = async (req, res) => {
         }
 
         const token = jwt.sign(
-            { userId: user._id, email: user.email, name: user.FirstName },
+            { userId: user._id, email: user.email, name: user.firstname },
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
         );

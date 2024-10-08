@@ -20,3 +20,4 @@ __exportStar(require("./review.controller"), exports);
 __exportStar(require("./order.controller"), exports);
 __exportStar(require("./auth.controller"), exports);
 __exportStar(require("./user.controller"), exports);
+__exportStar(require("./upload.controller"), exports);

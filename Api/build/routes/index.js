@@ -20,3 +20,4 @@ __exportStar(require("./review.router"), exports);
 __exportStar(require("./order.router"), exports);
 __exportStar(require("./user.router"), exports);
 __exportStar(require("./auth.router"), exports);
+__exportStar(require("./upload.router"), exports);

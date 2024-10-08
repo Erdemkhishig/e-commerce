@@ -3,12 +3,12 @@
 import Image from 'next/image'
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
-import React, { createContext, useContext, useState } from 'react';
+import React from 'react';
 import { useProduct } from '@/contexts/Productcontext';
 
 
 export const Main = () => {
-    const { products, loading, error, getAllProducts } = useProduct();
+    const { products, loading, error } = useProduct();
 
 
     const images = Array.from({ length: 18 }, (_, index) => (

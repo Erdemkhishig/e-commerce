@@ -5,14 +5,14 @@ import { useAuth } from "@/components/provider/Auth.provider";
 
 
 export const Rate = () => {
-    const { user, logout } = useAuth()
+    const { user } = useAuth()
     return (
         <div className="flex flex-col items-start w-[400px] rounded-2xl">
 
             <div className="flex font-bold flex-col gap-4 bg-gray-200 rounded-2xl px-8 w-full py-4">
                 <div className=" flex flex-col gap-2 border-gray-500 border-b-2 border-dotted">
                     <div className="flex gap-2 w-full py-2">
-                        <p>{user?.name}</p>
+                        <p>{user?.firstname}</p>
                         <p><FaStar fill="yellow" size={24} /></p>
                         <p><FaStar fill="yellow" size={24} /></p>
                         <p><FaStar fill="yellow" size={24} /></p>

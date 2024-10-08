@@ -3,11 +3,11 @@ const { Schema, model } = mongoose;
 import bcrypt from 'bcrypt';
 
 const userSchema = new Schema({
-    FirstName: {
+    firstname: {
         type: String,
         required: true,
     },
-    LastName: {
+    lastname: {
         type: String,
         required: true,
     },

@@ -14,7 +14,7 @@ const order_schema_1 = require("../models/order.schema");
 const createOrderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userId, productId, paid, address } = req.body;
     try {
-        const newOrder = yield new order_schema_1.orderModel({
+        const newOrder = yield new order_schema_1.Order({
             userId,
             productId,
             paid,
@@ -37,7 +37,7 @@ const createOrderController = (req, res) => __awaiter(void 0, void 0, void 0, fu
 exports.createOrderController = createOrderController;
 const getOrderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const order = yield order_schema_1.orderModel.find({});
+        const order = yield order_schema_1.Order.find({});
         return res.status(200).json({
             order,
         });
@@ -52,7 +52,7 @@ exports.getOrderController = getOrderController;
 const getOrderByIdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const order = yield order_schema_1.orderModel.findById(id);
+        const order = yield order_schema_1.Order.findById(id);
         if (!order) {
             return res.status(404).json({
                 message: "order not found",

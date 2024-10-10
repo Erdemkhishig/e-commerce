@@ -1,6 +1,6 @@
 "use client"
+import { api } from '@/lib/axios';
 import React, { createContext, useContext, useState } from 'react';
-import axios from 'axios';
 
 interface FileUploadContextType {
     uploadFile: (ProductImage: File) => Promise<string | null>;
@@ -27,7 +27,7 @@ export const FileUploadProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         formData.append('ProductImage', file);
 
         try {
-            const response = await axios.post('/upload', formData, {
+            const response = await api.post('/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

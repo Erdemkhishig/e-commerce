@@ -18,7 +18,7 @@ export const Rate = () => {
                         <p><FaStar fill="yellow" size={24} /></p>
                     </div>
                 </div>
-                <p>Одоор үнэлэх:</p>
+                <p>Одоор үнэлэх::</p>
                 <p><FaStar fill="yellow" size={24} /></p>
                 <p>Сэтгэгдэл үлдээх:</p>
                 <Textarea className="bg-white p-4 rounded-2xl" placeholder="Энд бичнэ үү" />

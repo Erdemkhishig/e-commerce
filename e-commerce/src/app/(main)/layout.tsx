@@ -12,22 +12,19 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-      >
-        <CartProductsProvider>
-          <LikedProductsProvider>
-            <AuthProvider>
-              <Header />
-              <div className="bg-gray-100 py-8 " style={{ minHeight: "calc(100vh - 282px - 68px)" }}>
-                {children}
-              </div>
-              <Footer />
-            </AuthProvider>
-            <ToastContainer />
-          </LikedProductsProvider>
-        </CartProductsProvider>
-      </body>
-    </html>
+    <>
+      <CartProductsProvider>
+        <LikedProductsProvider>
+          <AuthProvider>
+            <Header />
+            <div className="bg-gray-100 py-8 " style={{ minHeight: "calc(100vh - 282px - 68px)" }}>
+              {children}
+            </div>
+            <Footer />
+          </AuthProvider>
+          <ToastContainer />
+        </LikedProductsProvider>
+      </CartProductsProvider>
+    </>
   );
 }

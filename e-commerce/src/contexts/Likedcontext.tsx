@@ -18,12 +18,17 @@ export const useLikedProducts = () => {
 
 export const LikedProductsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [likedProducts, setLikedProducts] = useState<string[]>(() => {
-        const storedLikedProducts = localStorage.getItem('likedProducts');
-        return storedLikedProducts ? JSON.parse(storedLikedProducts) : [];
+        if (typeof window !== 'undefined') { // Check if we are in the browser
+            const storedLikedProducts = localStorage.getItem('likedProducts');
+            return storedLikedProducts ? JSON.parse(storedLikedProducts) : [];
+        }
+        return [];
     });
 
     useEffect(() => {
-        localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+        if (typeof window !== 'undefined') { // Check if we are in the browser
+            localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+        }
     }, [likedProducts]);
 
     return (

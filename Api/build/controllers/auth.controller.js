@@ -19,18 +19,19 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, email, password, role } = req.body;
+    const { firstname, lastname, email, password, role } = req.body;
     try {
         const existingUser = yield models_1.userModel.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: "User already exists" });
         }
-        const newUser = new models_1.userModel({ name, email, password, role });
+        const newUser = new models_1.userModel({ firstname, lastname, email, password, role });
         yield newUser.save();
         res.status(201).json({
             message: "User registered successfully",
             user: {
-                name: newUser.FirstName,
+                firstname: newUser.firstname,
+                lastname: newUser.lastname,
                 email: newUser.email,
             }
         });
@@ -55,7 +56,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!process.env.JWT_SECRET) {
             return res.status(500).json({ message: "JWT secret is not defined" });
         }
-        const token = jsonwebtoken_1.default.sign({ userId: user._id, email: user.email, name: user.FirstName }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jsonwebtoken_1.default.sign({ userId: user._id, email: user.email, name: user.firstname }, process.env.JWT_SECRET, { expiresIn: "1h" });
         return res.status(200).json({ message: "Login successful", token, user });
     }
     catch (error) {

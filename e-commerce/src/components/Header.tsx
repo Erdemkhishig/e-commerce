@@ -133,7 +133,7 @@ export const Header = () => {
                 <div className="flex gap-6 items-center">
                     <Link href="/save"><div className='relative'><FaRegHeart color="white" size={30} />
                     </div> <div className=' absolute rounded-full bg-blue-700 text-white px-2 top-2 right-[29.8rem]'>{savedProducts.length}</div></Link>
-                    <Link href="/cart"><div className='relative'><MdOutlineShoppingCart color="white" size={34} />
+                    <Link href="/basket"><div className='relative'><MdOutlineShoppingCart color="white" size={34} />
                     </div><div className=' absolute rounded-full bg-blue-700 text-white px-2 top-2 right-[26.6rem]'>{chosenProducts.length}</div></Link>
                     <Link href="/register"><Button className="border-blue-700  rounded-2xl border-2 hover:bg-blue-700">Бүртгүүлэх</Button></Link>
                     <Link href="/login"><Button className="border-blue-700  rounded-2xl border-2 hover:bg-blue-700">Нэвтрэх</Button></Link>

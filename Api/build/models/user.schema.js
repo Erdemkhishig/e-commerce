@@ -17,11 +17,11 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const { Schema, model } = mongoose_1.default;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const userSchema = new Schema({
-    FirstName: {
+    firstname: {
         type: String,
         required: true,
     },
-    LastName: {
+    lastname: {
         type: String,
         required: true,
     },

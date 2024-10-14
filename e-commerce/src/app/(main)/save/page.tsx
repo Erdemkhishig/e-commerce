@@ -54,7 +54,7 @@ export default function Save() {
                                     <button
                                         onClick={() => handleCartClick(product._id)}
                                         className="p-2 rounded-2xl border-2 border-blue-600 bg-blue-600 text-white w-28">
-                                        Сагслах
+                                        Сагслах -|
                                     </button>
                                 </div>
                                 <div className="w-full flex items-center justify-end px-8">
